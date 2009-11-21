@@ -6,14 +6,14 @@
  *
  * @see  http://docs.kohanaphp.com/install#application
  */
-$application = 'application';
+$application = '../application';
 
 /**
  * The directory in which your modules are located.
  *
  * @see  http://docs.kohanaphp.com/install#modules
  */
-$modules = 'modules';
+$modules = '../modules';
 
 /**
  * The directory in which the Kohana resources are located. The system
@@ -21,7 +21,7 @@ $modules = 'modules';
  *
  * @see  http://docs.kohanaphp.com/install#system
  */
-$system = 'system';
+$system = '../system';
 
 /**
  * The default extension of resource files. If you change this, all resources
@@ -72,6 +72,13 @@ if ( ! is_dir($system) AND is_dir(DOCROOT.$system))
 define('APPPATH', realpath($application).DIRECTORY_SEPARATOR);
 define('MODPATH', realpath($modules).DIRECTORY_SEPARATOR);
 define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
+
+// Define some PHP 5.3 constants
+if (version_compare(PHP_VERSION, '5.3.0', '<'))
+{
+    define('E_DEPRECATED', 8192);
+    define('E_USER_DEPRECATED', 16384);
+}
 
 // Clean up the configuration vars
 unset($application, $modules, $system);
