@@ -16,3 +16,6 @@
 [submodule "public/sqlbuddy"]
 	path = public/sqlbuddy
 	url = git://github.com/git-mirror/sqlbuddy.git
+[submodule "modules/userguide"]
+	path = modules/userguide
+	url = git://github.com/kohana/userguide.git
