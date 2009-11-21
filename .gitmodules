@@ -13,3 +13,6 @@
 [submodule "modules/auth"]
 	path = modules/auth
 	url = git://github.com/kohana/auth.git
+[submodule "public/sqlbuddy"]
+	path = public/sqlbuddy
+	url = git://github.com/git-mirror/sqlbuddy.git
