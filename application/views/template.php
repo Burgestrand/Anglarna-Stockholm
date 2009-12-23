@@ -20,7 +20,24 @@
     </head>
     <?php flush(); ?> 
     <body>
-        <?php echo $content ?>
+        <div class="section panel">
+            
+        </div>
+        <hr>
+        <div class="section main">
+            <div class="header">
+                <?php echo View::factory('navigation') ?>
+            </div>
+            <hr>
+            <div class="section body">
+                <?php echo $content;
+                      if ( ! empty($sidebar)): ?> 
+                <div class="aside">
+                    <?php echo $sidebar ?>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>

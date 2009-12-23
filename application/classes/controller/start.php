@@ -6,7 +6,7 @@
      * @author      Kim Burgestrand <kim@burgestrand.se>
      * @license     <http://www.gnu.org/licenses/lgpl-3.0.txt> LGPL v3
      */
-    class Controller_Welcome extends My_Controller_Template
+    class Controller_Start extends My_Controller_Template
     {
         public function action_index()
         {
