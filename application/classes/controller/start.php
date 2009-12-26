@@ -10,7 +10,7 @@
     {
         public function action_index()
         {
-            $this->template->content = 'Hello, world!';
+            $this->template->content = 'This space is intentionally left blank.';
         }
     }
     

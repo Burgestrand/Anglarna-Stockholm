@@ -6,11 +6,28 @@
       */
      class My_Controller_Template extends Controller_Template
      {
+         public $messages = array();
+         
+         /**
+          * Add a message with the given type.
+          * 
+          * @param msg      The message to display
+          * @param type     The message type (or div class)
+          */
+         public function message_add($msg, $type = 'info')
+         {
+             if ( ! isset($this->messages[$type]))
+             {
+                 $this->messages[$type] = array();
+             }
+             $this->messages[$type][] = $msg;
+         }
+         
          public function before()
          {
              parent::before();
-             $this->template->title   = '';
-             $this->template->content = '';
+             $this->template->title = sprintf('%s | *placeholder*', utf8::ucfirst(Request::instance()->controller));
+             $this->template->bind('messages', $this->messages);
          }
          
          public function after()

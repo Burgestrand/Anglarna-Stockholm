@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=utf-8">
-        <title><?php echo $title ?></title>
+        <title><?php echo html::chars($title) ?></title>
         
         <meta name="author" content="*placeholder*">
         <meta name="description" content="*placeholder*">
@@ -20,20 +20,29 @@
     </head>
     <?php flush(); ?> 
     <body>
-        <div class="section panel">
-            
-        </div>
-        <hr>
         <div class="section main">
             <div class="header">
+                <h1>Änglarna Stockholm</h1>
                 <?php echo View::factory('navigation') ?>
             </div>
             <hr>
             <div class="section body">
-                <?php echo $content;
+                <?php foreach ($messages as $type => $msgs): ?> 
+                <ul class="message <?php echo html::chars($type) ?>">
+                    <?php
+                        foreach ($msgs as $msg)
+                        {
+                            printf('<li>%s</li>', $msg);
+                        }
+                    ?>
+                </ul>
+                <?php endforeach;
+                     
+                      // Content & sidebar
+                      echo $content;
                       if ( ! empty($sidebar)): ?> 
                 <div class="aside">
-                    <?php echo $sidebar ?>
+                    <?php echo $sidebar; ?>
                 </div>
                 <?php endif; ?>
             </div>
