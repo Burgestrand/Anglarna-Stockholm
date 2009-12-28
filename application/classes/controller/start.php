@@ -1,10 +1,7 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
     /**
-     * Start page controller
-     *
-     * @category    Controllers
      * @author      Kim Burgestrand <kim@burgestrand.se>
-     * @license     <http://www.gnu.org/licenses/lgpl-3.0.txt> LGPL v3
+     * @license     http://www.gnu.org/licenses/lgpl-3.0.txt
      */
     class Controller_Start extends My_Controller_Template
     {

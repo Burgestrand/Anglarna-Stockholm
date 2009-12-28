@@ -1,8 +1,12 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
      /**
+      * This is the basic page controller that all my main pages descend
+      * from. It contains some basic view logic that is used everywhere,
+      * including auth controls.
+      * 
       * @category    Controllers
       * @author      Kim Burgestrand <kim@burgestrand.se>
-      * @license     <http://www.gnu.org/licenses/lgpl-3.0.txt> LGPL v3
+      * @license     http://www.gnu.org/licenses/lgpl-3.0.txt
       */
      class My_Controller_Template extends Controller_Template
      {
@@ -23,6 +27,10 @@
              $this->messages[$type][] = $msg;
          }
          
+         /**
+          * Binds some common variables to the template view, such as
+          * `title`, `messages` etcetera.
+          */
          public function before()
          {
              parent::before();
@@ -30,6 +38,11 @@
              $this->template->bind('messages', $this->messages);
          }
          
+         /**
+          * If the request is an AJAX request then the template is
+          * stripped out from the response, and only the content is 
+          * returned.
+          */
          public function after()
          {
              if (Request::$is_ajax)
