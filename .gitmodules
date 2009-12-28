@@ -19,3 +19,6 @@
 [submodule "modules/userguide"]
 	path = modules/userguide
 	url = git://github.com/kohana/userguide.git
+[submodule "modules/codebench"]
+	path = modules/codebench
+	url = git://github.com/kohana/codebench.git
