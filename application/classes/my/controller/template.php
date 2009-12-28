@@ -11,6 +11,7 @@
      class My_Controller_Template extends Controller_Template
      {
          public $messages = array();
+         protected $session;
          
          /**
           * Add a message with the given type.
@@ -36,6 +37,8 @@
              parent::before();
              $this->template->title = sprintf('%s | *placeholder*', utf8::ucfirst(Request::instance()->controller));
              $this->template->bind('messages', $this->messages);
+             
+             $this->session = Session::instance('database');
          }
          
          /**

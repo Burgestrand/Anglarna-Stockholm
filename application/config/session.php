@@ -1,8 +1,7 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
 return array('native' => array(
-                 'name'      => 'session_name', // ??
-                 'encrypted' => true,
+                 'name'      => 'phpsession', // ??
                  'lifetime'  => 60 * 90, // session valid 90 minutes
               ),
              'database' => array(
