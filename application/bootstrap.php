@@ -87,7 +87,7 @@
      */
     Route::set('default', '(<controller>(/<action>(/<id>)))')
         ->defaults(array(
-            'controller' => 'search',
+            'controller' => 'index',
             'action'     => 'index',
         ));
     
