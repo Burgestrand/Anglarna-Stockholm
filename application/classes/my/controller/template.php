@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
      /**
-      * This is the basic page controller that all my main pages descend
+      * This is the basic page controller that all main pages descend
       * from. It contains some basic view logic that is used everywhere,
       * including auth controls.
       * 

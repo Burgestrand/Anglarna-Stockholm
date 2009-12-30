@@ -2,9 +2,14 @@
  Författare: Kim Burgestrand (http://burgestrand.se/)
  Beskrivning: En stilmall för felsidor.
 
- Licens: <http://www.gnu.org/licenses/lgpl-3.0.txt> LGPL v3
+ Licens: http://www.gnu.org/licenses/lgpl-3.0.txt
  
 */
+
+body {
+    font-size: 89%;
+    line-height: 1.2em;
+    }
 
 /* =1 Global
 ---------------------------------------------------------------------------- */

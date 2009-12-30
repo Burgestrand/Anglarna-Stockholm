@@ -22,25 +22,19 @@
     <body>
         <div class="section main">
             <div class="header">
-                <h1>Änglarna Stockholm</h1>
+                <h1>*placeholder*</h1>
                 <?php echo View::factory('navigation') ?>
             </div>
             <hr>
             <div class="section body">
-                <?php foreach ($messages as $type => $msgs): ?> 
-                <ul class="message <?php echo html::chars($type) ?>">
-                    <?php
-                        foreach ($msgs as $msg)
-                        {
-                            printf('<li>%s</li>', $msg);
-                        }
-                    ?>
-                </ul>
-                <?php endforeach;
-                     
-                      // Content & sidebar
-                      echo $content;
-                      if ( ! empty($sidebar)): ?> 
+                <?php 
+                    if ( ! empty($messages))
+                    {
+                        echo View::factory('messages')->bind('messages', $messages);
+                    }
+                  
+                    echo $content;
+                    if ( ! empty($sidebar)): ?>
                 <div class="aside">
                     <?php echo $sidebar; ?>
                 </div>

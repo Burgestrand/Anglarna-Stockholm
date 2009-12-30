@@ -36,7 +36,7 @@
     /**
      * Sets the sites’ language
      */
-    i18n::$lang = 'sv-se';
+    i18n::$lang = 'en-us';
     
     /**
      * Initialize Kohana, setting the default options.
@@ -87,7 +87,7 @@
      */
     Route::set('default', '(<controller>(/<action>(/<id>)))')
         ->defaults(array(
-            'controller' => 'start',
+            'controller' => 'search',
             'action'     => 'index',
         ));
     
