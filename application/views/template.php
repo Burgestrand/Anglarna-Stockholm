@@ -9,7 +9,7 @@
         <meta name="description" content="*placeholder*">
         <meta name="keywords" content="*placeholder*">
         
-        <link rel="shortcut icon" type="image/png" href="/favicon.png">
+        <link rel="icon" type="image/png" href="/favicon.png">
         
         <!-- YUI (reset, base) -->
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/reset-fonts/reset-fonts.css"> 
