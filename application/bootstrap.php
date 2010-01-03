@@ -83,7 +83,8 @@
         'codebench'  => MODPATH.'codebench',  // Benchmarking tool
         
         // Changelog
-        'glip'       => MODPATH.'glip',
+        'koglip'     => MODPATH.'koglip',
+        'kogitlog'   => MODPATH.'kogitlog',  // changelog view
         ));
     
     /**

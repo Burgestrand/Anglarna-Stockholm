@@ -25,3 +25,6 @@
 [submodule "modules/koglip"]
 	path = modules/koglip
 	url = git@github.com:Burgestrand/koglip.git
+[submodule "modules/kogitlog"]
+	path = modules/kogitlog
+	url = git@github.com:Burgestrand/kogitlog.git
