@@ -38,7 +38,7 @@
              $this->template->title = sprintf('%s | *placeholder*', utf8::ucfirst(Request::instance()->controller));
              $this->template->bind('messages', $this->messages);
              
-             $this->session = Session::instance('database');
+             $this->session = Session::instance('native');
          }
          
          /**
