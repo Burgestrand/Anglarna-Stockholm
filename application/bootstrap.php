@@ -74,6 +74,7 @@
     Kohana::modules(array(
         // Database
         'database'   => MODPATH.'database',   // Database access
+        'sprig'      => MODPATH.'sprig',      // Sprig ORM
         'orm'        => MODPATH.'orm',        // Object Relationship Mapping
         'auth'       => MODPATH.'auth',       // Basic authentication
         
