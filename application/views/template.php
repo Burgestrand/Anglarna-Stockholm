@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/base/base-min.css">
         
         <!-- CSS Styles -->
-        <link rel="stylesheet" href="/css/original/style.css" type="text/css" media="screen" title="Original" charset="utf-8">
+        <link rel="stylesheet" href="/css/original/style.css" type="text/css" media="screen" title="Original">
     </head>
     <?php flush(); ?> 
     <body>
