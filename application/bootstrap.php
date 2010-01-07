@@ -72,13 +72,20 @@
      * Enable modules. Modules are referenced by a relative or absolute path.
      */
     Kohana::modules(array(
-        'auth'       => MODPATH.'auth',       // Basic authentication
-        'codebench'  => MODPATH.'codebench',  // Benchmarking tool
+        // Database
         'database'   => MODPATH.'database',   // Database access
-        // 'image'      => MODPATH.'image',      // Image manipulation
+        'sprig'      => MODPATH.'sprig',      // Sprig ORM
         'orm'        => MODPATH.'orm',        // Object Relationship Mapping
+        'auth'       => MODPATH.'auth',       // Basic authentication
+        
+        // Misc
         'pagination' => MODPATH.'pagination', // Paging of results
         'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+        'codebench'  => MODPATH.'codebench',  // Benchmarking tool
+        
+        // Changelog
+        'koglip'     => MODPATH.'koglip',
+        'kogitlog'   => MODPATH.'kogitlog',  // changelog view
         ));
     
     /**

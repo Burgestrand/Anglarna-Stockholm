@@ -22,3 +22,9 @@
 [submodule "modules/codebench"]
 	path = modules/codebench
 	url = git://github.com/kohana/codebench.git
+[submodule "modules/kogitlog"]
+	path = modules/kogitlog
+	url = git@github.com:Burgestrand/kogitlog.git
+[submodule "modules/sprig"]
+	path = modules/sprig
+	url = git://github.com/shadowhand/sprig.git
