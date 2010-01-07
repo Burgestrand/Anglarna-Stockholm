@@ -123,12 +123,6 @@
                            ->set('content', View::factory('errors/404'));
     }
     
-    if ($request->send_headers()->response)
-    {
-        // Post-modify response
-        // $request->response = str_replace(array(), array(), $request->response);
-    }
-    
     /**
      * Display request response
      */
