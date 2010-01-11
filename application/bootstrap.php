@@ -84,7 +84,6 @@
         'codebench'  => MODPATH.'codebench',  // Benchmarking tool
         
         // Changelog
-        'koglip'     => MODPATH.'koglip',
         'kogitlog'   => MODPATH.'kogitlog',  // changelog view
         ));
     
