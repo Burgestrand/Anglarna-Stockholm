@@ -72,19 +72,11 @@
      * Enable modules. Modules are referenced by a relative or absolute path.
      */
     Kohana::modules(array(
-        // Database
         'database'   => MODPATH.'database',   // Database access
         'sprig'      => MODPATH.'sprig',      // Sprig ORM
-        'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-        'auth'       => MODPATH.'auth',       // Basic authentication
-        
-        // Misc
-        'pagination' => MODPATH.'pagination', // Paging of results
         'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-        'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-        
-        // Changelog
-        'kogitlog'   => MODPATH.'kogitlog',  // changelog view
+        'kogitlog'   => MODPATH.'kogitlog',   // Changelog
+        'template'   => MODPATH.'template',   // Controller template and view examples
         ));
     
     /**
@@ -118,7 +110,7 @@
         // Create a 404 response
         $request->status   = 404;
         $request->response = View::factory('errors/template')
-                           ->set('title', '404 :: *placeholder*')
+                           ->set('title', '404')
                            ->set('content', View::factory('errors/404'));
     }
     
