@@ -19,3 +19,9 @@
 [submodule "modules/template"]
 	path = modules/template
 	url = git@github.com:Burgestrand/template.git
+[submodule "modules/sprig-auth"]
+	path = modules/sprig-auth
+	url = git://github.com/banks/sprig-auth.git
+[submodule "modules/auth"]
+	path = modules/auth
+	url = git://github.com/kohana/auth.git

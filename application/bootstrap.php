@@ -11,6 +11,14 @@
     date_default_timezone_set('Europe/Stockholm');
     
     /**
+    * Set the default locale.
+    *
+    * @see http://docs.kohanaphp.com/about.configuration
+    * @see http://php.net/setlocale
+    */
+    setlocale(LC_ALL, 'en_US.utf-8');
+    
+    /**
      * Enable the Kohana auto-loader.
      *
      * @see  http://docs.kohanaphp.com/features/autoloading
@@ -74,6 +82,8 @@
     Kohana::modules(array(
         'database'   => MODPATH.'database',   // Database access
         'sprig'      => MODPATH.'sprig',      // Sprig ORM
+        'sprig-auth' => MODPATH.'sprig-auth',
+        'auth'       => MODPATH.'auth',
         'userguide'  => MODPATH.'userguide',  // User guide and API documentation
         'kogitlog'   => MODPATH.'kogitlog',   // Changelog
         'template'   => MODPATH.'template',   // Controller template and view examples
