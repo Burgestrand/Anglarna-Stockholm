@@ -96,7 +96,11 @@
     Route::set('default', '(<controller>(/<action>(/<id>)))')
         ->defaults(array(
             'controller' => 'index',
-            'action'     => 'index',
+        ));
+    
+    Route::set('catch-all', '<path>', array('path' => '.+'))
+         ->defaults(array(
+             'controller' => 'index', // same as above, or error controller
         ));
     
     /**
@@ -119,9 +123,7 @@
         
         // Create a 404 response
         $request->status   = 404;
-        $request->response = View::factory('errors/template')
-                           ->set('title', '404')
-                           ->set('content', View::factory('errors/404'));
+        $request->response = View::factory('errors/error');
     }
     
     /**
