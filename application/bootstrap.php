@@ -69,7 +69,7 @@
     /**
      * Attach the file write to logging. Multiple writers are supported.
      */
-    Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
+    Kohana::$log->attach(new Log_File(APPPATH.'logs'));
     
     /**
      * Attach a file reader to config. Multiple readers are supported.
@@ -115,7 +115,7 @@
             throw $e;
         
         // Log the error
-        Kohana::$log->add(Kohana::ERROR, Kohana::exception_text($e));
+        Kohana::$log->add(Kohana::ERROR, $e);
         
         // Create a 404 response
         $request->status   = 404;
