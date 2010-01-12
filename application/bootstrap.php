@@ -93,37 +93,42 @@
      * Set the routes. Each route must have a minimum of a name, a URI and a set of
      * defaults for the URI.
      */
+    Route::set('error', 'error(/<status>)', array('status' => '\d{3}'))
+        ->defaults(array(
+            'controller' => 'error',
+            'action'     => 'error',
+            'status'     => 500,
+        ));
+    
     Route::set('default', '(<controller>(/<action>(/<id>)))')
         ->defaults(array(
             'controller' => 'index',
-        ));
-    
-    Route::set('catch-all', '<path>', array('path' => '.+'))
-         ->defaults(array(
-             'controller' => 'index', // same as above, or error controller
         ));
     
     /**
      * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
      * If no source is specified, the URI will be automatically detected.
      */
-    $request = Request::instance($_SERVER['REQUEST_URI']);
-    
     try
     {
-        $request->execute();
+        $request = Request::instance($_SERVER['REQUEST_URI'])->execute();
     }
     catch (Exception $e)
     {
         if (IN_DEVELOPMENT)
-            throw $e;
+           throw $e;
         
-        // Log the error
-        Kohana::$log->add(Kohana::ERROR, $e);
-        
-        // Create a 404 response
-        $request->status   = 404;
-        $request->response = View::factory('errors/error');
+        if ($e instanceof Kohana_Request_Exception)
+        {
+            // No route has matched, just 404 it
+            $request = Request::factory('error/404')->execute();
+        }
+        else
+        {
+            // Unknown error. Log it and fall back to a 404.
+            Kohana::$log->add(Kohana::ERROR, $e);
+            $request = Request::factory('error/404')->execute();
+        }
     }
     
     /**
