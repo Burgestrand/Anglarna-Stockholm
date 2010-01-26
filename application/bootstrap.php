@@ -44,7 +44,7 @@
     /**
      * Sets the sites’ language
      */
-    i18n::$lang = 'en-us';
+    i18n::$lang = 'sv-se';
     
     /**
      * Initialize Kohana, setting the default options.
