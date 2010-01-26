@@ -28,11 +28,11 @@
             // Back
             if (Request::$referrer)
             {
-                $this->suggestions[] = html::anchor(Request::$referrer, 'Go back to where you came from');
+                $this->suggestions[] = html::anchor(Request::$referrer, __('Go back to where you came from'));
             }
             
             // Root
-            $this->suggestions[] = html::anchor('/', 'Start over from scratch');
+            $this->suggestions[] = html::anchor('/', __('Start over from scratch'));
             
             // Call possible extra function
             $extra = "extra_{$status}";
@@ -47,7 +47,7 @@
             array_unshift($this->suggestions,
                           html::anchor('http://google.com/search?q=site:'.$_SERVER['SERVER_NAME']
                                       .' '.strtr($_SERVER['REQUEST_URI'], '/', ' ')
-                                      ,'Try searching for what might have been here'));
+                                      ,__('Try searching for what might have been here')));
         }
         
         public function before()

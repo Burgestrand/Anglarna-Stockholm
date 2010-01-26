@@ -12,7 +12,7 @@
         <?php echo $content ?>
         
         <p>
-            Here are some suggestions to where you can go next.
+            <?php echo __('Here are some suggestions to where you can go next.') ?>
         </p>
         <ul>
             <?php foreach($suggestions as $suggestion): ?>
@@ -20,8 +20,7 @@
             <?php endforeach; ?>
         </ul>
         <p>
-            If you feel something is missing that should be here, feel free to
-            <a href="/contact/">contact us</a>.
+			<?php echo __('If you feel something is missing that should be here, feel free to ') . html::anchor('contact', __('contact us')) ?>
         </p>
     </body>
 </html>
