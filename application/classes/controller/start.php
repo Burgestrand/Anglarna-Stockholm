@@ -16,9 +16,10 @@
         public function before()
         {
             parent::before();
-            View::set_global('title', 'Änglarna Stockholm');
+            $this->template->title = 'Änglarna Stockholm';
+            $this->template->sidebar = View::factory('sidebar/start');
         }
     }
 
 /* End of file start.php */
-/* Location: ./application/classes/controller/start.php */ 
+/* Location: ./application/classes/controller/start.php */
