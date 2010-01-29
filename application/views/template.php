@@ -23,8 +23,8 @@
             <div class="header">
                 <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum', 'galleri')) ?>
             </div>
-            <hr>
-            <div class="section body">
+            <hr class="hide">
+            <div class="section body <?php empty($sidebar) or print('sidebar') ?>">
                 <?php 
                     foreach ($messages as $type => $msgs)
                     {
@@ -37,13 +37,15 @@
                     }
                     
                     echo $content;
-                    
-                    if ( ! empty($sidebar))
-                    {
-                        printf('<div class="aside">%s</div>', $sidebar);
-                    }
                 ?>
             </div>
+            <?php
+                if ( ! empty($sidebar))
+                {
+                    print '<hr class="hide">';
+                    printf('<div class="aside">%s</div>', $sidebar);
+                }
+            ?>
         </div>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
