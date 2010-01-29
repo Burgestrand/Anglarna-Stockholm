@@ -21,6 +21,7 @@
     <body>
         <div class="section main">
             <div class="header">
+                <img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107">
                 <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum', 'galleri')) ?>
             </div>
             <hr class="hide">

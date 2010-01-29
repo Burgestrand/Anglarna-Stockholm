@@ -1,28 +1,146 @@
 /*
  Författare: Kim Burgestrand (http://burgestrand.se/)
- Beskrivning: ?
+ Beskrivning: En kopia av Änglarna Stockholms tidigare design.
 
  Licens: http://www.gnu.org/licenses/lgpl-3.0.txt
 */
 
-body {
-    color:     #333;
-    font-size: 100.01%;
-    line-height: 1.2em;
+/* Typsnitt */
+@font-face {
+    font-family: "Museo Sans";
+	src: url('/css/fonts/MuseoSans_500.otf');
     }
 
-/* =1 Global
+/* Globala regler */
+html,body {
+	height: 100%;
+	width: 100%;
+    }
+body {
+	color: #333;
+    font: 89%/1.25 'Museo Sans', 'Helvetica', 'Verana', sans-serif;
+	margin:	0;
+    }
+.hide { display: none; }
+
+/* =& Links
+---------------------------------------------------------------------------- */
+a {
+	border-bottom: 1px solid;
+    text-decoration: none;
+    }
+a:link { color:             #369 }
+a:visited { color:          #369 }
+a:hover { outline:          1px dotted }
+a:active { color:           #900 }
+
+/* =& Headings
 ---------------------------------------------------------------------------- */
 
-/* =2 Links
+/* =& Text
 ---------------------------------------------------------------------------- */
 
-/* =3 Headings
+p { width: 36em; }
+
+/* =& Lists
 ---------------------------------------------------------------------------- */
 
-/* =4 Tables
+li { list-style: inside; }
+
+/* =& Layout
 ---------------------------------------------------------------------------- */
 
-/* =5 Forms
+.main {
+	border-left: 1px solid;
+	border-right: 1px solid;
+	margin: 0 auto;
+	min-height: 100%;
+    width: 67.4em;
+    }
+
+/* Header */
+.main > .header {
+	background: #147;
+	border-bottom: 1px solid;
+    position: relative;
+    }
+	.header > img {
+		border-bottom: 1px solid;
+		display: block;
+		margin: 0 auto;
+		position: relative;
+	    }
+	.header > .nav {
+		margin: 1em 0 0;
+		font-size: 120%;
+		overflow: auto;
+		position: relative;
+		width: 100%;
+	    }
+		.header > .nav li {
+	    	float: left;
+			list-style-type: none;
+			left: -50%;
+			margin-right: 1em;
+		    }
+		.header > .nav li:first-child a {
+		    margin-left: .5em;
+		    }
+		.header > .nav li a {
+			background: #369;
+			border-color: #333;
+			border-style: solid;
+			border-width: .15em .15em 0;
+			color: white;
+		    display: block;
+			padding: .3em .8em .1em;
+		    }
+		.header > .nav li.active a {
+		    background: white;
+			color: #147;
+		    }
+
+/* Body */
+.body {
+    clear: both;
+	padding: 2em .5em;
+    }
+.aside {
+    float: right;
+	width: 30%;
+    }
+
+/* =& Box
 ---------------------------------------------------------------------------- */
 
+.box {
+    border: 1px solid;
+	overflow: auto;
+	padding: 0 .5em;
+	width: auto;
+    }
+.box h1,
+.box h2 {
+    background: #369;
+	border-bottom: 1px solid #333;
+	color: white;
+	font-size: 1.4em;
+	font-weight: normal;
+	letter-spacing: 1px;
+	margin: 0 -.36em .36em;
+	padding: .2em .5em .2em;
+    }
+
+/* =& Start page specific
+---------------------------------------------------------------------------- */
+
+img.logo {
+	float: left;
+	margin-right: 1em;
+    }
+img.logo + p {
+    float: left;
+	height: 115px;
+	position: relative;
+	top: 1em;
+    }
