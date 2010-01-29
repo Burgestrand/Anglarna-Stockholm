@@ -9,3 +9,8 @@ att bygga ÄS en ny hemsida.
 Projektet förs helt ideellt, och vill man får man gärna hjälpa till. Då 
 jag även pluggar på heltid och har andra projekt kan det hända att 
 utvecklingen stannar av lite då och då.
+
+Framtida notiser
+----------------
+- Byt till InnoDB på sessionstabellen ifall sidladdning går segt vid
+  många besökare (row locks istället för table locks)

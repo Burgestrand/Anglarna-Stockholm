@@ -21,8 +21,7 @@
     <body>
         <div class="section main">
             <div class="header">
-                <h1>Template</h1>
-                <?php echo View::factory('navigation')->set('links', array('template')) ?>
+                <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum', 'galleri')) ?>
             </div>
             <hr>
             <div class="section body">
