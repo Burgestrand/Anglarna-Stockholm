@@ -10,7 +10,7 @@
          */
         public function action_index()
         {
-            
+            $this->template->content = View::factory('start/index');
         }
         
         public function before()
