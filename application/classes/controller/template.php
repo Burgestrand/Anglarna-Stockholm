@@ -12,6 +12,15 @@
             parent::before();
             $this->session = Session::instance('database');
             $this->auth    = Auth::instance();
+            
+            $this->messages += Arr::get($_SESSION, 'messages', array());
+            $_SESSION['messages'] = &$this->messages;
+        }
+        
+        public function after()
+        {
+            parent::after();
+            unset($_SESSION['messages']);
         }
     }
     
