@@ -14,3 +14,5 @@ Framtida notiser
 ----------------
 - Byt till InnoDB på sessionstabellen ifall sidladdning går segt vid
   många besökare (row locks istället för table locks)
+- Har patchat Sprig dels med <http://github.com/banks/sprig>, men även
+  en egen fix (<http://github.com/shadowhand/sprig/issues#issue/61>)

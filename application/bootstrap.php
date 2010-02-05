@@ -112,7 +112,7 @@
      */
     try
     {
-        $request = Request::instance($_SERVER['REQUEST_URI'])->execute();
+        $request = Request::instance($_SERVER['PATH_INFO'])->execute();
     }
     catch (Exception $e)
     {

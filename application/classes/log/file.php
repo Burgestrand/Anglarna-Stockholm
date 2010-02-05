@@ -2,6 +2,7 @@
     /**
      * Extends the Kohana_Log_File to handle objects.
      *
+     * @package     Änglarna STHLM
      * @category    Logging
      * @author      Kim Burgestrand <kim@burgestrand.se>
      * @license     http://www.gnu.org/licenses/lgpl-3.0.txt
