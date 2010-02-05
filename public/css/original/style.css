@@ -34,6 +34,21 @@ a:visited { color:          #369 }
 a:hover { outline:          1px dotted }
 a:active { color:           #900 }
 
+/* =& Forms
+---------------------------------------------------------------------------- */
+
+fieldset {
+	border-top: 1px solid #2a2a2a;
+	padding: 1em 0 0;
+    }
+legend {
+	background: #147;
+	color: white;
+	border: 1px solid;
+	font-size: 1.2em;
+	padding: .5em .5em;
+    }
+
 /* =& Headings
 ---------------------------------------------------------------------------- */
 
@@ -45,7 +60,12 @@ p { width: 36em; }
 /* =& Lists
 ---------------------------------------------------------------------------- */
 
-li { list-style: inside; }
+ul li, ol li {
+    list-style-position: inside;
+    }
+dl, ul, ol {
+    margin: 0 .5em .5em;
+    }
 
 /* =& Layout
 ---------------------------------------------------------------------------- */
@@ -73,7 +93,7 @@ li { list-style: inside; }
 	.header > .nav {
 		margin: 1em 0 0;
 		font-size: 120%;
-		overflow: auto;
+		overflow: hidden;
 		position: relative;
 		width: 100%;
 	    }
@@ -103,7 +123,7 @@ li { list-style: inside; }
 /* Body */
 .body {
     clear: both;
-	padding: 2em .5em;
+	padding: .5em .5em 2em;
     }
 .aside {
     float: right;
@@ -130,6 +150,32 @@ li { list-style: inside; }
 	margin: 0 -.36em .36em;
 	padding: .2em .5em .2em;
     }
+
+/* =& Message
+---------------------------------------------------------------------------- */
+
+ul.message {
+    border: 1px solid #666;
+	font-size: 1.2em;
+	margin: .5em 0;
+	padding: .5em 1em;
+    }
+.message.error {
+    background: #CC2929;
+	color: white;
+    }
+.message.info {
+    background: #369;
+	color: white;
+    }
+.message.success {
+    background: #3C3;
+	color: white;
+    }
+.message li {
+    list-style: none;
+    }
+
 
 /* =& Start page specific
 ---------------------------------------------------------------------------- */
