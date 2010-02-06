@@ -22,6 +22,7 @@ body {
 	margin:	0;
     }
 .hide { display: none; }
+.clear { clear: both; }
 
 /* =& Links
 ---------------------------------------------------------------------------- */
@@ -43,9 +44,18 @@ form dl {
     margin-left: 0;
 	margin-right: 0;
     }
+form dt {
+    margin-bottom: .2em;
+    }
 form dd {
     color: #999;
-	margin: .2em 0 .5em 0;
+	margin: 0 0 .5em 0;
+    }
+form.login dt + dd {
+    display: none;
+    }
+form.login dd + dd {
+    display: block;
     }
 fieldset {
 	border-top: 1px solid #2a2a2a;
@@ -80,7 +90,7 @@ h4, h5, h6 {
 /* =& Text
 ---------------------------------------------------------------------------- */
 
-p { max-width: 36em; }
+
 
 /* =& Lists
 ---------------------------------------------------------------------------- */
@@ -200,6 +210,7 @@ dl, ul, ol {
 
 .box {
     border: 1px solid;
+	margin-bottom: .5em;
 	overflow: auto;
 	padding: 0 .5em;
 	width: auto;

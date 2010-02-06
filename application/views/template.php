@@ -23,7 +23,7 @@
         <div class="section main">
             <div class="header">
                 <a href="/"><img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107"></a>
-                <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum', 'galleri')) ?>
+                <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum')) ?>
             </div>
             <hr class="hide">
             <div class="section body <?php empty($sidebar) or print('sidebar') ?>">
@@ -48,6 +48,7 @@
                     printf('<div class="aside">%s</div>', $sidebar);
                 }
             ?>
+            <div class="clear"></div>
         </div>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
