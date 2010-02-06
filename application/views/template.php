@@ -19,9 +19,10 @@
     </head>
     <?php flush(); ?> 
     <body>
+        <?php echo View::factory('panel') ?>
         <div class="section main">
             <div class="header">
-                <img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107">
+                <a href="/"><img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107"></a>
                 <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum', 'galleri')) ?>
             </div>
             <hr class="hide">
