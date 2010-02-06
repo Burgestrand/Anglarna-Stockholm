@@ -20,7 +20,7 @@
             
             // Fix fields
             $username = $this->_fields['username'];
-            $username->min_length = 3;
+            $username->min_length = 2;
             $username->max_length = 50;
             $username->rules = array();
             
