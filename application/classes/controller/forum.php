@@ -17,6 +17,7 @@
         public function before()
         {
             parent::before();
+            $this->template->title = 'Änglarna Stockholms forum';
             $this->template->sidebar = View::factory('sidebar');
         }
     }

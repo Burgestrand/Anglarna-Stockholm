@@ -17,7 +17,7 @@
         public function before()
         {
             parent::before();
-            $this->template->title = 'Änglarna Stockholm';
+            $this->template->title = 'Information om Änglarna Stockholm';
             $this->template->sidebar = View::factory('sidebar');
         }
     }
