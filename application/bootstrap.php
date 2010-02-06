@@ -100,6 +100,12 @@
             'status'     => 500,
         ));
     
+    Route::set('profile', 'user/view(/<user>)', array('user' => '.{2,50}'))
+         ->defaults(array(
+             'controller' => 'user',
+             'action'     => 'view',
+         ));
+    
     Route::set('default', '(<controller>(/<action>(/<id>)))')
         ->defaults(array(
             'controller' => 'start',
