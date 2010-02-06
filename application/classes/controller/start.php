@@ -18,7 +18,7 @@
         {
             parent::before();
             $this->template->title = 'Änglarna Stockholm';
-            $this->template->sidebar = View::factory('sidebar/start');
+            $this->template->sidebar = View::factory('sidebar');
         }
     }
 

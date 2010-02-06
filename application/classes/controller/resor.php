@@ -13,6 +13,12 @@
         {
             $this->template->content = View::factory('resor/index');
         }
+        
+        public function before()
+        {
+            parent::before();
+            $this->template->sidebar = View::factory('sidebar');
+        }
     }
     
 /* End of file resor.php */

@@ -8,6 +8,9 @@
      */
     class Controller_Template extends Template_Controller_Template
     {
+        /**
+         * Initializes Session, Auth and Messages
+         */
         public function before()
         {
             parent::before();
@@ -18,6 +21,9 @@
             $_SESSION['messages'] = &$this->messages;
         }
         
+        /**
+         * Removes Messages that’s been displayed
+         */
         public function after()
         {
             parent::after();
