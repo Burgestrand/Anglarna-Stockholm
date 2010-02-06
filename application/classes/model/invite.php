@@ -33,6 +33,53 @@
                 ))
             );
         }
+        
+        /**
+         * Loads the “Invite” model with the given primary key
+         * 
+         * @param primary key to load
+         * @param dummy value to conform with Sprig
+         * @return Model_Invite
+         */
+        public static function factory($token, array $dummy = array())
+        {
+            return parent::factory('invite', array('token' => $token));
+        }
+        
+        /**
+         * Checks the given invitation token for validity
+         * 
+         * Returns TRUE if, and only if, the following is confirmed:
+         * 1. is a SHA1 hash
+         * 2. exists in the database
+         * 3. is unique
+         * 4. has not been used up (nobody been registered using this yet)
+         * 
+         * @param token
+         * @return boolean
+         */
+        public static function valid($token)
+        {
+            // 1
+            if ( ! preg_match('#\A[0-9a-f]{40}\z#', $token))
+            {
+                return FALSE;
+            }
+            
+            // 2, 3, 4
+            $results = DB::select('*')
+                       ->from($this->table())
+                       ->where($this->pk(), '=', $token)
+                       ->where('invitee', 'is', NULL)
+                       ->count();
+            
+            if ($results !== 1)
+            {
+                return FALSE;
+            }
+            
+            return TRUE;
+        }
     }
     
 /* End of file invite.php */
