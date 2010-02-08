@@ -30,6 +30,17 @@
             
             unset($this->_fields['password_confirm']);
         }
+        
+        /**
+         * Overloads “has_role” to always return true if user has “admin”
+         *
+         * @param string | role
+         * @return boolean
+         */
+        public function has_role($role)
+        {
+            return parent::has_role('admin') || parent::has_role($role);
+        }
     }
     
 /* End of file user.php */
