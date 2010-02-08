@@ -38,26 +38,88 @@
          */
         public function action_view($user = NULL)
         {
-            $this->template->content = $content = View::factory('user/view');
-            $content->set('owner', FALSE);
+            // Temporary ALWAYS redirect
+            $this->request->redirect('forum');
             
             if (empty($user))
             {
-                if ( ! $this->auth->logged_in())
+                $this->template->content = $content = View::factory('user/list');
+                $content->users = Sprig::factory('user')->select_list();
+            }
+            else
+            {
+                $user = Model_User::factory($user)->load();
+                
+                $this->template->title = html::chars($user->username) . 's profil hos Änglarna Stockholm';
+                $this->template->content = $content = View::factory('user/view');
+                $content->user = (object)$user->as_array();
+                unset($content->user->password);
+                
+                // Set flag to show edit controls
+                $content->owner = FALSE;
+                if ($this->auth->logged_in())
                 {
-                    // TODO: show list of users
-                    $this->message_add('Du är inte inloggad och kan därför inte se din profil');
+                    $content->owner = $user->id = $this->auth->get_user()->id;
+                }
+            }
+        }
+        
+        /**
+         * Creates a new invitation!
+         */
+        public function action_invite()
+        {
+            // Make sure we have these roles
+            $this->authorize('login', 'ängel');
+            
+            if ( ! empty($_POST))
+            {
+                $user = $this->auth->get_user();
+                
+                $_POST += array(
+                    'token' => sha1(uniqid()),
+                    'inviter' => $user->id
+                );
+                
+                $invite = Sprig::factory('invite', $_POST);
+                
+                try
+                {
+                    $invite->create();
+                    
+                    // E-Mail
+                    $email = View::factory('email/invite')
+                             ->set('inviter', $user->username)
+                             ->set('message', arr::get($_POST, 'message', ''))
+                             ->set('url', url::site("user/register/{$invite->token}", true));
+                    
+                    // Send it!
+                    Email::send($invite->email, 
+                                $user->email, 
+                                'Änglarna Stockholm inbjudan',
+                                $email, TRUE);
+                    
+                    // Success message! YAY!
+                    $this->message_add(sprintf('Din inbjudan har skickats iväg till %s',
+                                               html::chars($invite->email)), 'success');
+                    
                     $this->request->redirect_back();
                 }
-                
-                $user = $this->auth->get_user()->username;
-                $content->owner = TRUE;
+                catch (Exception $e)
+                {
+                    $invite->delete();
+                    
+                    if ($e instanceof Validate_Exception)
+                    {
+                        foreach ($e->array->errors('user/invite') as $error)
+                        {
+                            $this->message_add($error, 'error');
+                        }
+                    }
+                }
             }
             
-            $user = Model_User::factory($user)->load();
-            $content->set('user', $user);
-            
-            $this->template->title = html::chars($user->username) . 's profil hos Änglarna Stockholm';
+            $this->request->redirect_back();
         }
         
         /**
@@ -97,6 +159,9 @@
          */
         public function action_register($token = NULL)
         {
+            // Logout; TODO: REMOVE
+            $this->auth->logout();
+            
             if ( ! Model_Invite::valid($token))
             {
                 $this->message_add('Din inbjudan är ogiltig.', 'error'); // TODO: better message
@@ -133,7 +198,7 @@
                     ))->update();
                     
                     // Make invite invalid
-                    $invite->values(array('invitee' => $user))->update();
+                    $invite->values(array('invitee' => $user->id))->update();
                                         
                     // Commit transaction
                     DB::query(NULL, 'COMMIT')->execute();
@@ -144,8 +209,7 @@
                     // Welcome message and redirect to control panel
                     $this->message_add(sprintf(
                         'Välkommen, %s! Du är nu registrerad och inloggad.
-                        Det här är din kontrollpanel där du kan ändra information
-                        om ditt konto. Glöm inte att besöka det stängda forumet!',
+                        Glöm inte att besöka det stängda forumet!',
                         html::chars($user->username))); // TODO: Make message
                     
                     $this->request->redirect('user/view', 303);
