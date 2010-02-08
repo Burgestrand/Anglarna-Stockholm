@@ -1,5 +1,4 @@
-<?php if (Auth::instance()->logged_in()) return;
-echo form::open('user/login', array('class' => 'box login')) ?>
+<?php echo form::open('user/login', array('class' => 'box login')) ?>
     <h2>Logga in</h2>
     <dl>
         <dt><label>Användarnamn <input type="text" name="username"></label></dt>

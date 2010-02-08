@@ -1,6 +1,15 @@
 <!-- Allsvenskan 2010 -->
 
-<?php echo View::factory('user/login') ?>
+<?php
+    if (Auth::instance()->logged_in())
+    {
+        echo View::factory('user/invite');
+    }
+    else
+    {
+        echo View::factory('user/login');
+    }
+?>
 
 <div class="section maillist box">
     <h2>Maillistan</h2>
