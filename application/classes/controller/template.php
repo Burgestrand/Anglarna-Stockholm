@@ -29,6 +29,23 @@
             parent::after();
             unset($_SESSION['messages']);
         }
+        
+        /**
+         * Authorize a user from the given roles, or return
+         * the user with a 403 message
+         *
+         * @param roles
+         */
+        public function authorize()
+        {
+            $args = func_get_args();
+            
+            if ( ! $this->auth->logged_in($args))
+            {
+                $this->message_add('Du har inte åtkomst till ' . html::chars($this->request->uri));
+                $this->request->redirect('/', 307);
+            }
+        }
     }
     
 /* End of file template.php */
