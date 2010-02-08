@@ -67,7 +67,7 @@
         {
             $this->auth->logout();
             $this->message_add('Du har nu loggats ut.');
-            $this->request->redirect_back();
+            $this->request->redirect('/');
         }
         
         /**
@@ -82,7 +82,10 @@
                 
                 if ( ! $this->auth->login($username, $password))
                 {
-                    $this->message_add('Fel användarnamn eller lösenord.', 'error');
+                    $this->message_add(sprintf(
+                        'Fel användarnamn eller lösenord. 
+                         Om du har glömt ditt lösenord kan vi <a href="/user/recover/%s">skicka ett nytt</a>.',
+                         rawurlencode($username)), 'error');
                 }
             }
             
