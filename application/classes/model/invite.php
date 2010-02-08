@@ -16,7 +16,7 @@
                     'unique' => TRUE,
                     'rules' => array(
                         'regex' => array('#\A[0-9a-f]{40}\z#'),
-                    )
+                    ),
                 )),
                 'email' => new Sprig_Field_Email(array(
                     'unique' => TRUE,
@@ -41,9 +41,14 @@
          * @param dummy value to conform with Sprig
          * @return Model_Invite
          */
-        public static function factory($token, array $dummy = array())
+        public static function factory($token = NULL, array $dummy = array())
         {
-            return parent::factory('invite', array('token' => $token));
+            if (Model_Invite::valid($token))
+            {
+                $dummy['token'] = $token;
+            }
+            
+            return parent::factory('invite', $dummy);
         }
         
         /**
@@ -66,11 +71,15 @@
                 return FALSE;
             }
             
+            // Get object values
+            $object = Model_Invite::factory();
+            
             // 2, 3, 4
             $results = DB::select('*')
-                       ->from($this->table())
-                       ->where($this->pk(), '=', $token)
+                       ->from($object->table())
+                       ->where($object->pk(), '=', $token)
                        ->where('invitee', 'is', NULL)
+                       ->execute()
                        ->count();
             
             if ($results !== 1)
