@@ -85,7 +85,6 @@
         'sprig-auth' => MODPATH.'sprig-auth',
         'auth'       => MODPATH.'auth',
         'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-        'kogitlog'   => MODPATH.'kogitlog',   // Changelog
         'template'   => MODPATH.'template',   // Controller template and view examples
         'e-mail'     => MODPATH.'kohana-email',
         ));
