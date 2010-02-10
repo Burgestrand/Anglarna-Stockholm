@@ -2,7 +2,7 @@
     /**
      * @package     Änglarna STHLM
      * @author      Kim Burgestrand
-     * @license     GNU GPLv3 http://www.gnu.org/licenses/gpl-3.0.txt
+     * @license     http://www.gnu.org/licenses/gpl-3.0.txt
      */
     class Controller_User extends Controller_Template
     {
@@ -96,8 +96,8 @@
                     // Send it!
                     Email::send($invite->email, 
                                 $user->email, 
-                                'Änglarna Stockholm inbjudan',
-                                $email, TRUE);
+                                '[Änglarna Stockholm] Du kan nu registrera dig på Änglarna Stockholms hemsida!',
+                                (string)$email, TRUE);
                     
                     // Success message! YAY!
                     $this->message_add(sprintf('Din inbjudan har skickats iväg till %s',
@@ -115,6 +115,10 @@
                         {
                             $this->message_add($error, 'error');
                         }
+                    }
+                    else
+                    {
+                        throw $e;
                     }
                 }
             }
@@ -159,8 +163,7 @@
          */
         public function action_register($token = NULL)
         {
-            // Logout; TODO: REMOVE
-            $this->auth->logout();
+            $this->auth->logged_in('admin') || $this->auth->logout();
             
             if ( ! Model_Invite::valid($token))
             {
