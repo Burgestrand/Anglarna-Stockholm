@@ -10,9 +10,15 @@ Projektet förs helt ideellt, och vill man får man gärna hjälpa till. Då
 jag även pluggar på heltid och har andra projekt kan det hända att 
 utvecklingen stannar av lite då och då.
 
+Meddelande till klonare
+-----------------------
+- application/cache och application/logs måste vara skrivbara av 
+  PHP-processen
+- config/email.php och config/database.php måste skrivas att passa er   
+  databas
+
 Framtida notiser
 ----------------
 - Byt till InnoDB på sessionstabellen ifall sidladdning går segt vid
   många besökare (row locks istället för table locks)
-- Har patchat Sprig dels med <http://github.com/banks/sprig>, men även
-  en egen fix (<http://github.com/shadowhand/sprig/issues#issue/61>)
+- http://wmd-editor.com/ ser lovande ut (med lite stiländringar)
