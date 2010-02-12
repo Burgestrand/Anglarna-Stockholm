@@ -1,4 +1,4 @@
-<ul class="nav">
+<ul class="nav pages">
 <?php
     foreach($links as $link)
     {
