@@ -8,12 +8,25 @@
      */
     class Sprig_Field_Ip extends Sprig_Field_Char
     {
-        public $rules = array('ip' => NULL);
+        public $min_length = 4; // IPv4
+        public $max_length = 16; // IPv6
+        public $default = NULL;
+        public $null = TRUE;
         
-        // public function value($value)
-        // {
-        //     return inet_ntop(parent::value($value));
-        // }
+        public function value($value)
+        {
+            $value = parent::value($value);
+            
+            if (is_null($value))
+            {
+                return inet_pton($_SERVER['REMOTE_ADDR']);
+            }
+            else
+            {
+                return Validate::ip($value) ? inet_pton($value) 
+                                            : inet_ntop($value);
+            }
+        }
     }
     
 /* End of file ip.php */
