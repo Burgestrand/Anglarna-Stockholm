@@ -22,7 +22,7 @@
         <?php echo View::factory('panel') ?>
         <div class="section main">
             <div class="header">
-                <a href="/"><img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107"></a>
+                <a class="logo" href="/"><img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107"></a>
                 <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum')) ?>
             </div>
             <hr class="hide">
@@ -50,7 +50,7 @@
             ?>
             <div class="clear"></div>
         </div>
-        
+                
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="/js/main.js" type="text/javascript" charset="utf-8"></script>

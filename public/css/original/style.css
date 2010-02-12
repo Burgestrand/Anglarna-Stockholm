@@ -1,269 +1,372 @@
 /*
- Författare: Kim Burgestrand (http://burgestrand.se/)
- Beskrivning: En kopia av Änglarna Stockholms tidigare design.
+    Författare: Kim Burgestrand (http://burgestrand.se/)
+    Beskrivning: En kopia av Änglarna Stockholms tidigare design.
 
- Licens: http://www.gnu.org/licenses/lgpl-3.0.txt
+    Licens: http://www.gnu.org/licenses/lgpl-3.0.txt
 */
 
-/* Typsnitt */
-@font-face {
+@font-face
+{
     font-family: "Museo Sans";
-	src: url('/css/fonts/MuseoSans_500.otf');
-    }
+    src: url('/css/fonts/MuseoSans_500.otf');
+}
 
-/* Globala regler */
-html {
+html,body
+{
     background: white url('img/brick.jpg');
-    }
-html,body {
-	height: 100%;
-	width: 100%;
-    }
-body {
-	color: #333;
-    font: 89%/1.25 'Museo Sans', 'Helvetica', 'Verana', sans-serif;
-	margin:	0;
-    }
-.hide { display: none; }
-.clear { clear: both; }
-
-/* =& Links
----------------------------------------------------------------------------- */
-a {
-	border-bottom: 1px solid;
-    text-decoration: none;
-    }
-a:link { color:             #369 }
-a:visited { color:          #369 }
-a:hover { outline:          1px dotted }
-a:active { color:           #900 }
-
-/* =& Forms
----------------------------------------------------------------------------- */
-
-form ul,
-form ol,
-form dl {
-    margin-left: 0;
-	margin-right: 0;
-    }
-form dt {
-    margin-bottom: .2em;
-    }
-form dd {
-    color: #999;
-	margin: 0 0 .5em 0;
-    }
-form.login dt + dd {
-    display: none;
-    }
-form.login dd + dd {
-    display: block;
-    }
-fieldset {
-	border-top: 1px solid #2a2a2a;
-	padding: 1em 0 0;
-    }
-legend {
-	background: #147;
-	color: white;
-	border: 1px solid;
-	font-size: 1.2em;
-	padding: .5em .5em;
-    }
-label {
-    width: 98%;
-    }
-input {
-	display: block;
-	width: inherit;
-	}
-input[type="submit"] {
+    height: 100%;
     width: 100%;
-    }
+}
 
-/* =& Headings
----------------------------------------------------------------------------- */
+body
+{
+    color: #333;
+    font: 89%/1.25 'Museo Sans', 'Helvetica', 'Verdana', sans-serif;
+    margin: 0;
+}
 
-h1, h2, h3, 
-h4, h5, h6 {
-    margin-top: 0;
-    }
+/* one-liners */
+.hide
+{ display: none; }
+.clear
+{ clear: both; }
+li
+{ list-style-position: inside !important; }
+dl, ul, ol
+{ margin: 0 .5em .5em; }
 
-/* =& Text
----------------------------------------------------------------------------- */
+/*
+ * -------------------------------------------------------------------------
+ * =& Structure
+ * -------------------------------------------------------------------------
+ */
 
-
-
-/* =& Lists
----------------------------------------------------------------------------- */
-
-ul li, ol li {
-    list-style-position: inside;
-    }
-dl, ul, ol {
-    margin: 0 .5em .5em;
-    }
-
-/* =& Layout
----------------------------------------------------------------------------- */
-
-.main, .wrap {
+.main, .wrap
+{
     height: auto;
-	margin: 0 auto;
-	width: 67.4em;
-    }
-
-.main {
-	background: white;
-	border-left: 1px solid;
-	border-right: 1px solid;
-	min-height: 100%;
-    }
-
-/* Panel */
-.panel {
-	background: #147;
-	border-bottom: .4em solid #0b3e6f;
-	color: white;
-    height: 2em;
-	position: fixed;
-	top: 0;
-	overflow: hidden;
-	width: 100%;
-	z-index: 99;
-    }
-.panel p {
-    line-height: 2em; /* .panel.height */
-	max-width: 100%;
-	width: inherit;
-    }
-.panel a {
-	border: 0;
-    color: #9CF;
-    }
-.panel .actions {
-    float: right;
-    }
-
-/* Header */
-.panel ~ .main > .header {
-    padding-top: 2em;
-    }
-.main > .header {
-	background: #147;
-	border-bottom: 1px solid;
-    position: relative;
-    }
-	.header > a {
-		border: 0;
-		display: block;
-		height: 107px;
-		margin: 0 auto;
-		position: relative;
-		width: 746px;
-	    }
-	.header > .nav {
-		background: #369;
-		border-top: 1px solid;
-		margin: 0;
-		font-size: 120%;
-		overflow: hidden;
-		position: relative;
-		width: 100%;
-	    }
-		.header > .nav li {
-	    	float: left;
-			list-style-type: none;
-			left: -50%;
-			margin-right: 1em;
-		    }
-		.header > .nav li:first-child a {
-		    margin-left: .5em;
-		    }
-		.header > .nav li a {
-			background: #369;
-			border: 0;
-			color: white;
-		    display: block;
-			padding: .3em .8em .1em;
-		    }
-		.header > .nav li.active a {
-		    background: white;
-			color: #147;
-		    }
+    margin: 0 auto;
+    width: 67.4em;
+}
+.main
+{
+    background: white;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    min-height: 100%;
+}
 
 /* Body */
-.body {
+.body 
+{
     clear: both;
-	padding: .5em .5em 2em;
-    }
-.body.sidebar {
-	float: left;
-    width: 70%;
-    }
-.aside {
+    padding: .5em .5em 2em;
+}
+	.body.sidebar /* body followed by sidebar */
+	{
+		float: left;
+		width: 70%;
+	}
+
+/* Sidebar */
+.aside 
+{
     float: right;
-	overflow: hidden;
-	padding: .5em .5em 0 0;
-	width: 26%;
-    }
+    overflow: hidden;
+    padding: .5em .5em 0 0;
+    width: 26%;
+}
 
-/* =& Box
----------------------------------------------------------------------------- */
+/*
+ * -------------------------------------------------------------------------
+ * =& Widgets
+ * -------------------------------------------------------------------------
+ */
 
-.box {
+
+/* Panel */
+.panel 
+{
+    background: #147;
+    border-bottom: .4em solid #0b3e6f;
+    color: white;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    z-index: 99;
+}
+    .panel p 
+	{
+        line-height: 2em; /* .panel.height */
+        max-width: 100%;
+        margin: 0 1em;
+	}
+    .panel a 
+	{
+        border: 0;
+        color: #9CF !important; /* avoid pseudoclass coloring */
+	}
+    .panel .actions
+	{
+		float: right;
+	}
+
+
+/* Header */
+.panel ~ .main > .header { padding-top: 2em; } /* panel push-down */
+.main > .header 
+{
+    background: #147;
+    border-bottom: 1px solid;
+	text-align: center;
+}
+
+a.logo
+{
+	border: 0;
+	display: block;
+	height: 107px;
+	margin: 0 auto;
+	width: 746px;
+	position: relative;
+}
+.nav.pages
+{
+	border-width: 1px 0 0 0;
+	margin-bottom: 0;
+}
+	.nav.pages li:first-child a
+	{
+		margin-left: .5em;
+	}
+
+
+/* Navigation */
+.nav 
+{
+    background: #369;
+	border: 1px solid;
+    margin: 0 0 .5em 0;
+    font-size: 120%;
+    overflow: hidden;
+    position: relative;
+}
+	.nav li 
+	{
+		float: left;
+		list-style-type: none;
+		margin-right: 1em;
+	}
+	.nav li a 
+	{
+		border: 0;
+		color: white;
+		display: block;
+		padding: .3em .8em .1em;
+	}
+	.nav li.active a 
+	{
+		background: white;
+		color: #147;
+	}
+
+
+/* Box */
+.box
+{
     border: 1px solid;
-	margin-bottom: .5em;
-	overflow: auto;
-	padding: 0 .5em;
-	width: auto;
-    }
-.box h1,
-.box h2 {
-    background: #369;
-	border-bottom: 1px solid #333;
-	color: white;
-	font-size: 1.4em;
-	font-weight: normal;
-	letter-spacing: 1px;
-	margin: 0 -.36em .36em;
-	padding: .2em .5em .2em;
-    }
+    margin-bottom: .5em;
+    overflow: auto;
+    padding: 0 .5em;
+    width: auto;
+}
+	.box > *:first-child /* DANGER?! */
+	{
+	    background: #369;
+	    border-bottom: 1px solid #333;
+	    color: white;
+	    font-size: 120%;
+	    font-weight: normal;
+	    letter-spacing: 1px;
+	    margin: 0 -.42em .42em;
+	    padding: .2em .5em .2em;
+	}
 
-/* =& Message
----------------------------------------------------------------------------- */
 
-ul.message {
+/* Messages */
+.message
+{
     border: 1px solid #666;
-	font-size: 1.2em;
-	margin: 0 0 .5em;
-	padding: .5em 1em;
-    }
-.message.error {
-    background: #CC2929;
-	color: white;
-    }
-.message.info {
-    background: #369;
-	color: white;
-    }
-.message.success {
-    background: #3C3;
-	color: white;
-    }
-.message li {
-    list-style: none;
-    }
+    font-size: 1.2em;
+    margin: 0 0 .5em;
+    padding: .5em 1em;
+}
+	.message li
+	{ list-style: none; }
+	.message.error
+	{
+		background: #CC2929;
+		color: white;
+	}
+	.message.info
+	{
+		background: #369;
+		color: white;
+	}
+	.message.success
+	{
+		background: #3C3;
+		color: white;
+	}
+
+/*
+ * -------------------------------------------------------------------------
+ * =& Links
+ * -------------------------------------------------------------------------
+ */
 
 
-/* =& Start page specific
----------------------------------------------------------------------------- */
+a
+{
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+a:link
+{
+    color: #369;
+}
+a:visited
+{
+    color: #369;
+}
+a:hover
+{
+	border: 0;
+	color: #090;
+    outline: 1px dotted;
+}
+a:active
+{
+    color: #090;
+}
 
-img.logo {
+/*
+ * -------------------------------------------------------------------------
+ * =& Forms
+ * -------------------------------------------------------------------------
+ */
+
+
+form ul, form ol, form dl
+{ margin: 0; }
+form li
+{ list-style: none; }
+form dd
+{
+	color: #999;
+	margin: 0 0 .5em 0;
+}
+label
+{
+	color: #666;
+	font-weight: bold;
+	width: 98%;
+}
+label input, label textarea
+{
+	/* voodoo */
+	margin: .2em 0 .5em;
+	padding: .2em;
+}
+input[type="submit"]
+{
+	background: #147 url('img/stripes.png');
+	border: 1px solid black;
+	color: white;
+	cursor: pointer;
+	letter-spacing: 1px;
+	font-size: 120%;
+	font-weight: bold;
+	text-shadow: black 1px 1px 1px;
+	padding: .2em 0;
+	width: 100%;
+}
+input[type="submit"]:active
+{
+	background-color: #693;
+}
+/* http://stackoverflow.com/questions/1030793/input-with-displayblock-is-not-a-block-why-not/1033745#1033745 */
+.voodoo
+{
+	display: block;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-khtml-box-sizing: border-box;
+	width: 100%;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * =& PAGE: START
+ * -------------------------------------------------------------------------
+ */
+
+
+.about img
+{
 	float: left;
 	margin-right: 1em;
-    }
-.about.box p {
-	max-width: 100%;
-    }
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * =& PAGE: FORUM
+ * -------------------------------------------------------------------------
+ */
+
+/* Posts */
+.posts {}
+	.posts li
+	{
+		list-style: none !important;
+		margin: 0;
+		padding: .5em;
+	}
+
+p.meta
+{
+	border-bottom: 1px solid #ddd;
+	color: #999;
+	margin: 0 0 .2em;
+}
+	p.meta .date
+	{
+		float: right;
+	}
+	p.meta + *
+	{
+		clear: both;
+	}
+
+/* Paging */
+.nav.paging
+{
+	background: inherit;
+	border: 0;
+	margin: 1.5em 0;
+	overflow: visible;
+	text-align: center;
+}
+	.nav.paging li
+	{
+		display: inline;
+		float: none;
+		width: auto;
+	}
+		.nav.paging li a
+		{
+			color: #09c;
+			display: inline;
+		}
