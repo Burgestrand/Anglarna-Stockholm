@@ -47,11 +47,7 @@
             {
                 $roles = $forum->roles->as_array(NULL, 'name');
                 
-                if (empty($roles))
-                {
-                    $forums[] = $forum;
-                }
-                elseif(call_user_func_array(array($this->auth, 'logged_in'), $roles))
+                if (call_user_func_array(array($this->auth, 'has_role'), $roles))
                 {
                     $forums[] = $forum;
                 }
