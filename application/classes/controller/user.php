@@ -70,7 +70,11 @@
         public function action_invite()
         {
             // Make sure we have these roles
-            $this->authorize('login', 'ängel');
+            if ( ! $this->auth->has_role('login', 'ängel'))
+            {
+                $this->message_add('Bara inloggade <em>änglar</em> får bjuda in nya medlemmar!', 'error');
+                $this->request->redirect_back();
+            }
             
             if ( ! empty($_POST))
             {
@@ -100,8 +104,8 @@
                                 (string)$email, TRUE);
                     
                     // Success message! YAY!
-                    $this->message_add(sprintf('Din inbjudan har skickats iväg till %s',
-                                               html::chars($invite->email)), 'success');
+                    $this->message_add(sprintf('Din inbjudan har skickats iväg till %s.',
+                                               html::chars($invite->email)));
                     
                     $this->request->redirect_back();
                 }
@@ -148,10 +152,11 @@
                 
                 if ( ! $this->auth->login($username, $password))
                 {
-                    $this->message_add(sprintf(
-                        'Fel användarnamn eller lösenord. 
-                         Om du har glömt ditt lösenord kan vi <a href="/user/recover/%s">skicka ett nytt</a>.',
-                         rawurlencode($username)), 'error');
+                    $this->message_add('Fel användarnamn eller lösenord.', 'error');
+                    $this->message_add(
+                        sprintf('Om du har glömt ditt lösenord kan vi 
+                                 <a href="/user/recover/%s">skicka ett nytt</a>!', 
+                                 rawurlencode($username)));
                 }
             }
             
