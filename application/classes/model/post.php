@@ -17,8 +17,9 @@
                 'forum' => new Sprig_Field_BelongsTo(array(
                     'model' => 'Forum',
                     'editable' => FALSE,
+                    'empty' => FALSE,
                 )),
-                'user' => new Sprig_Field_HasOne(array(
+                'user' => new Sprig_Field_BelongsTo(array(
                     'model' => 'User',
                     'empty' => TRUE,
                 )),
@@ -27,11 +28,7 @@
                     'editable' => FALSE,
                 )),
                 'message' => new Sprig_Field_Char,
-                'created' => new Sprig_Field_Timestamp(array(
-                    'format' => 'Y-m-d H:i:s',
-                    'auto_now_create' => TRUE,
-                    'editable' => FALSE,
-                )),
+                'created' => new Sprig_Field_Datetime,
             );
         }
     }

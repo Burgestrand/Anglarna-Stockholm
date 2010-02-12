@@ -10,7 +10,7 @@
 <?php echo form::open('forum/post') ?> 
     <ul>
         <li>
-            <label>Namn <input type="text" name="username" value="<?php echo $username ?>" class="voodoo"></label>
+            <label>Namn <input type="text" name="author" value="<?php echo $username ?>" class="voodoo"></label>
         </li>
         <li>
             <label>Meddelande <textarea rows="3" cols="80" name="message" class="voodoo"></textarea></label>
@@ -19,6 +19,7 @@
     <p>
         <input type="submit" value="Publicera inlägg" class="voodoo">
     </p>
+    <input type="hidden" name="forum" value="<?php echo $forum->id ?>">
 </form>
 <hr>
 

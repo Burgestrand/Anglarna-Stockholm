@@ -36,7 +36,43 @@
          */
         public function action_post()
         {
+            if ( ! empty($_POST))
+            {
+                // Fix the forum ID
+                $_POST['forum'] = (int) Arr::get($_POST, 'forum', 0);
+                
+                // Check forum access levels
+                $forum = Sprig::factory('forum', array('id' => $_POST['forum']))->load();
+                if ($forum->loaded())
+                {
+                    $roles = $forum->roles->as_array(NULL, 'name');
+                    if ( ! $this->auth->has_roles($roles))
+                    {
+                        $this->message_add('Du har inte tillgång till det angivna forumet', 'error');
+                        $this->request->redirect_back('/', 307);
+                    }
+                }
+                
+                // Set up fields
+                $this->auth->logged_in() AND $_POST['user'] = $this->auth->get_user()->id;
+                
+                // Create post
+                $post = Sprig::factory('post', $_POST);
+                                
+                try
+                {
+                    $post->create();
+                }
+                catch (Validate_Exception $e)
+                {
+                    foreach ($e->array->errors('forum/post') as $error)
+                    {
+                        $this->message_add($error, 'error');
+                    }
+                }
+            }
             
+            $this->request->redirect_back();
         }
         
         /**
