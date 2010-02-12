@@ -39,10 +39,9 @@
         public function authorize()
         {
             $args = func_get_args();
-            
             if ( ! $this->auth->logged_in($args))
             {
-                $this->message_add('Du har inte åtkomst till ' . html::chars($this->request->uri));
+                $this->message_add('Du har inte åtkomst till ' . html::chars($this->request->uri), 'error');
                 $this->request->redirect('/', 307);
             }
         }
