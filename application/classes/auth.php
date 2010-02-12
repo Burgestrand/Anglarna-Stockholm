@@ -12,13 +12,11 @@
          * 
          * Note: if no roles are passed it always returns true
          *
-         * @param  role,...
+         * @param  array roles
          * @return boolean
          */
-        public function has_role()
+        public function has_roles(array $roles)
         {
-            $roles = func_get_args();
-            
             return empty($roles) ? TRUE 
                                  : call_user_func_array(array($this, 'logged_in'), 
                                                         $roles);

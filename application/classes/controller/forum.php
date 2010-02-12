@@ -17,13 +17,10 @@
             
             // Make sure the current user has access to the forum
             $roles = $forum->roles->as_array(NULL, 'name');
-            if ( ! empty($roles))
+            if ( ! $this->auth->has_roles($roles))
             {
-                if ( ! call_user_func_array(array($this->auth, 'logged_in'), $roles))
-                {
-                    $this->message_add('Du har inte tillgång till det angivna forumet', 'error');
-                    $this->request->redirect_back('/', 307);
-                }
+                $this->message_add('Du har inte tillgång till det angivna forumet', 'error');
+                $this->request->redirect_back('/', 307);
             }
             
             $this->template->content = $content = View::factory('forum/index');
@@ -32,6 +29,14 @@
             $content->username = $this->auth->logged_in() ? $this->auth->get_user()->username : '';
             $content->paging = View::factory('forum/paging');
             $content->forum = $forum;
+        }
+        
+        /**
+         * Post a new post in the current forum
+         */
+        public function action_post()
+        {
+            
         }
         
         /**
@@ -47,7 +52,7 @@
             {
                 $roles = $forum->roles->as_array(NULL, 'name');
                 
-                if (call_user_func_array(array($this->auth, 'has_role'), $roles))
+                if ($this->auth->has_roles($roles))
                 {
                     $forums[] = $forum;
                 }
