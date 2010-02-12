@@ -100,11 +100,17 @@
             'status'     => 500,
         ));
     
+    Route::set('forums', 'forum(/<forum>)', array('forum' => '\d+'))
+        ->defaults(array(
+            'controller' => 'forum',
+            'action' => 'index',
+        ));
+    
     Route::set('profile', 'user/view(/<user>)', array('user' => '.{2,50}'))
-         ->defaults(array(
-             'controller' => 'user',
-             'action'     => 'view',
-         ));
+        ->defaults(array(
+            'controller' => 'user',
+            'action'     => 'view',
+        ));
     
     Route::set('default', '(<controller>(/<action>(/<id>)))')
         ->defaults(array(

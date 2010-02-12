@@ -7,11 +7,57 @@
     class Controller_Forum extends Controller_Template
     {
         /**
-         * Lists recent news and presents a welcome page
+         * Views the given forum, or the first valid forum
          */
         public function action_index()
         {
-            $this->template->content = View::factory('forum/index');
+            // Load the current forum
+            $forum = $this->request->param('forum', 1);
+            $forum = Sprig::factory('forum', array('id' => $forum))->load();
+            
+            // Make sure the current user has access to the forum
+            $roles = $forum->roles->as_array(NULL, 'name');
+            if ( ! empty($roles))
+            {
+                if ( ! call_user_func_array(array($this->auth, 'logged_in'), $roles))
+                {
+                    $this->message_add('Du har inte tillgång till det angivna forumet', 'error');
+                    $this->request->redirect_back('/', 307);
+                }
+            }
+            
+            $this->template->content = $content = View::factory('forum/index');
+            $content->forums = $this->forums();
+            
+            $content->username = $this->auth->logged_in() ? $this->auth->get_user()->username : '';
+            $content->paging = View::factory('forum/paging');
+            $content->forum = $forum;
+        }
+        
+        /**
+         * List all forums the current user has access to
+         * 
+         * @return array
+         */
+        public function forums()
+        {
+            $forums = array();
+            
+            foreach (Sprig::factory('forum')->load(NULL, 0) as $forum)
+            {
+                $roles = $forum->roles->as_array(NULL, 'name');
+                
+                if (empty($roles))
+                {
+                    $forums[] = $forum;
+                }
+                elseif(call_user_func_array(array($this->auth, 'logged_in'), $roles))
+                {
+                    $forums[] = $forum;
+                }
+            }
+            
+            return $forums;
         }
         
         public function before()
