@@ -12,7 +12,7 @@
 	url = git://github.com/kohana/userguide.git
 [submodule "modules/sprig"]
 	path = modules/sprig
-	url = git://github.com/shadowhand/sprig.git
+	url = git://github.com/Burgestrand/sprig.git
 [submodule "modules/template"]
 	path = modules/template
 	url = git@github.com:Burgestrand/template.git
