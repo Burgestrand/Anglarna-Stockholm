@@ -208,16 +208,16 @@ a.logo
 		background: #CC2929;
 		color: white;
 	}
+
 	.message.info
 	{
 		background: #369;
 		color: white;
 	}
-	.message.success
-	{
-		background: #3C3;
-		color: white;
-	}
+		.message.info a
+		{
+			color: #adf;
+		}
 
 /*
  * -------------------------------------------------------------------------
@@ -242,7 +242,6 @@ a:visited
 a:hover
 {
 	border: 0;
-	color: #090;
     outline: 1px dotted;
 }
 a:active
