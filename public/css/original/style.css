@@ -344,12 +344,15 @@ input[type="submit"]:active
  */
 
 /* Posts */
-.posts {}
+.posts
+{
+	margin: 0;
+}
 	.posts li
 	{
 		list-style: none !important;
 		margin: 0;
-		padding: .5em;
+		padding: .5em 0;
 	}
 
 p.meta
