@@ -41,7 +41,7 @@
          * @param dummy value to conform with Sprig
          * @return Model_Invite
          */
-        public static function factory($token = NULL, array $dummy = array())
+        public static function factory($token, array $dummy = array())
         {
             if (Model_Invite::valid($token))
             {
@@ -72,7 +72,7 @@
             }
             
             // Get object values
-            $object = Model_Invite::factory();
+            $object = Model_Invite::factory(NULL);
             
             // 2, 3, 4
             $results = DB::select('*')
