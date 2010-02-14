@@ -39,7 +39,7 @@ CREATE TABLE `invites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `invites` (`token`, `e-mail`, `inviter`, `invitee`) VALUES 
-('1ba8a4f1778c52e8d6e766acfce17cc87203ebd8', 'kim@burgestrand.se', '25', NULL);
+('1ba8a4f1778c52e8d6e766acfce17cc87203ebd8', 'kim@burgestrand.se', '1', NULL);
 
 CREATE TABLE `posts` (
    `id` int(11) unsigned not null auto_increment,
