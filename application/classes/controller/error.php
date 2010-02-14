@@ -29,11 +29,11 @@
             // Back
             if (Request::$referrer)
             {
-                $this->suggestions[] = html::anchor(Request::$referrer, __('Go back to where you came from'));
+                $this->suggestions[] = html::anchor(Request::$referrer, __('Gå tillbaka dit du kom ifrån'));
             }
             
             // Root
-            $this->suggestions[] = html::anchor('/', __('Start over from scratch'));
+            $this->suggestions[] = html::anchor('/', __('Börja om från början'));
             
             // Call possible extra function
             $extra = "extra_{$status}";
@@ -48,7 +48,7 @@
             array_unshift($this->suggestions,
                           html::anchor('http://google.com/search?q=site:'.$_SERVER['SERVER_NAME']
                                       .' '.strtr($_SERVER['REQUEST_URI'], '/', ' ')
-                                      ,__('Try searching for what might have been here')));
+                                      ,__('Försök att söka efter vad som kan ha varit här (via Google)')));
         }
         
         public function before()
@@ -63,8 +63,7 @@
             }
             
             // View variables
-            $this->template->title = $this->request->status . ' :: ' 
-                                   . Request::$messages[$this->request->status];
+            $this->template->title = __(Request::$messages[$this->request->status]);
         }
     }
     
