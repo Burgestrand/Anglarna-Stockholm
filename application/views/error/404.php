@@ -1,6 +1,5 @@
 <p>
-    We could not find the page you requested, though it’s most certainly
-    not your fault. Please accept our apologies for this — we'll see to
-    it that the developer responsible is given 20 lashes (but only after
-    he or she has fixed this problem).
+    Sidan du besöker kunde inte hittas, men det är säkerligen inte ditt fel.
+    Vi ber så hemskt mycket om ursäkt och ska se till att den ansvarige
+    ges 20 piskrapp (men bara efter han eller hon har löst problemet).
 </p>

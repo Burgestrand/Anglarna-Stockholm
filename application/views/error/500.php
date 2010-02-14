@@ -1,3 +1,4 @@
 <p>
-    The server made a boo-boo.
+    Någonting gick väldigt fel. Webmastern har fått ett e-mail och felet
+    kommer förhoppningsvis att åtgärdas.
 </p>

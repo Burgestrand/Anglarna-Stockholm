@@ -4,6 +4,10 @@
         <meta http-equiv="Content-type" content="text/html;charset=utf8">
         <title><?php echo $title ?></title>
         
+        <!-- YUI (reset, base) -->
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/reset-fonts/reset-fonts.css"> 
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/base/base-min.css">
+        
         <link rel="stylesheet" href="/css/error.css" type="text/css" media="screen" charset="utf-8">
     </head>
     <body>
@@ -12,7 +16,7 @@
         <?php echo $content ?>
         
         <p>
-            <?php echo __('Here are some suggestions to where you can go next.') ?>
+            <?php echo __('Här är någa förslag som du kan försöka med istället:') ?>
         </p>
         <ul>
             <?php foreach($suggestions as $suggestion): ?>
@@ -20,7 +24,7 @@
             <?php endforeach; ?>
         </ul>
         <p>
-			<?php echo __('If you feel something is missing that should be here, feel free to ') . html::anchor('contact', __('contact us')) ?>
+			<?php echo __('Om du känner att något saknas som faktiskt bör vara här får du gärna ') . html::mailto('stockholm@anglarna.se', __('kontakta&nbsp;oss')) ?>!
         </p>
     </body>
 </html>
