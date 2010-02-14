@@ -88,6 +88,9 @@
         'template'   => MODPATH.'template',   // Controller template and view examples
         'e-mail'     => MODPATH.'kohana-email',
         ));
+
+    // Attach verbose writer
+    Kohana::$log->attach(new Log_File_Exception(APPPATH.'logs'), (array)Kohana::ERROR);
     
     /**
      * Set the routes. Each route must have a minimum of a name, a URI and a set of
