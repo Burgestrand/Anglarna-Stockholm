@@ -19,16 +19,25 @@
             $roles = $forum->roles->as_array(NULL, 'name');
             if ( ! $this->auth->has_roles($roles))
             {
-                $this->message_add('Du har inte tillgång till det angivna forumet', 'error');
-                $this->request->redirect_back('/', 307);
+                $this->message_add('Du har inte tillgång till det angivna forumet.', 'error');
+                $this->request->redirect('/', 307);
             }
             
             $this->template->content = $content = View::factory('forum/index');
             $content->forums = $this->forums();
             
+            // Forum
+            $content->forum_id = $forum->id;
+            
+            // Display of posts
             $content->username = $this->auth->logged_in() ? $this->auth->get_user()->username : '';
-            $content->paging = View::factory('forum/paging');
-            $content->forum = $forum;
+            
+            $posts = Sprig::factory('post', array('forum' => $forum->id));
+            $ipp = 10;
+            $content->paging = $paging = html::paging(arr::get($_GET, 'page', 1), 
+                                                      ceil($posts->count() / $ipp),
+                                                      5);
+            $content->posts = $posts->load(DB::select()->offset(($paging->current - 1) * $ipp), $ipp);
         }
         
         /**
@@ -48,7 +57,7 @@
                     $roles = $forum->roles->as_array(NULL, 'name');
                     if ( ! $this->auth->has_roles($roles))
                     {
-                        $this->message_add('Du har inte tillgång till det angivna forumet', 'error');
+                        $this->message_add('Du har inte tillgång till det angivna forumet.', 'error');
                         $this->request->redirect_back('/', 307);
                     }
                 }
