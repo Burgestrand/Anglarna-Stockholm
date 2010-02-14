@@ -1,4 +1,5 @@
-<?php echo form::open("user/register/{$invite->token}") ?>
+<?php echo form::open("user/register/{$invite->token}", array('class' => 'box')) ?>
+    <h2>Registrera dig som Ängel!</h2>
     <dl>
         <dt><label>Namn: <input type="text" name="username" class="voodoo"></label></dt>
             <dd>
