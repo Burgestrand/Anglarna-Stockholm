@@ -23,7 +23,8 @@
         <div class="section main">
             <div class="header">
                 <a class="logo" href="/"><img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107"></a>
-                <?php echo View::factory('navigation')->set('links', array('start', 'resor', 'forum')) ?>
+                <?php echo View::factory('navigation')->set('links', array('start', 'forum', 'kontakt')) ?>
+                <div class="clear"></div>
             </div>
             <hr class="hide">
             <div class="section body <?php empty($sidebar) or print('sidebar') ?>">
@@ -50,7 +51,7 @@
             ?>
             <div class="clear"></div>
         </div>
-                
+        
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="/js/main.js" type="text/javascript" charset="utf-8"></script>
