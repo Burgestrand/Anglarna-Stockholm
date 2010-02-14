@@ -10,7 +10,7 @@
 <?php echo form::open('forum/post', array('class' => 'clear')) ?> 
     <ul>
         <li>
-            <label>Namn <input type="text" name="author" value="<?php echo $username ?>" class="voodoo"></label>
+            <label>Namn <input type="text" name="author" value="<?php echo $username ?>" maxlength="50" class="voodoo"></label>
         </li>
         <li>
             <label>Meddelande <textarea rows="3" cols="80" name="message" class="voodoo"></textarea></label>

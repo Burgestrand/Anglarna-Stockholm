@@ -1,7 +1,7 @@
 <?php echo form::open("user/register/{$invite->token}", array('class' => 'box')) ?>
     <h2>Registrera dig som Ängel!</h2>
     <dl>
-        <dt><label>Namn: <input type="text" name="username" class="voodoo"></label></dt>
+        <dt><label>Namn: <input type="text" name="username" class="voodoo" maxlength="50"></label></dt>
             <dd>
                 Det alias eller nick du vill ha för att logga in med.
                 Får inte vara längre än 50 tecken.
