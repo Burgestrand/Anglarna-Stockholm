@@ -22,7 +22,8 @@
                 $roles = (array) $roles;
             }
             
-            $roles = array_merge($roles, array_slice(func_get_args(), 1));
+            $args = func_get_args();
+            $roles = array_merge($roles, array_slice($args, 1));
             
             return empty($roles) ? TRUE 
                                  : call_user_func_array(array($this, 'logged_in'), 
