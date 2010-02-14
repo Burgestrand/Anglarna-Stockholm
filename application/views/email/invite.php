@@ -4,8 +4,8 @@
 </p>
 <?php
     if ( ! empty($message)):
-        printf('<p>%s meddelar också: %s</p>', html::chars($inviter),
-                                               html::chars($message));
+        printf('<p>%s meddelar också</p><pre>%s</pre>', html::chars($inviter),
+                                                        html::chars($message));
     endif;
 ?>
 <p>
