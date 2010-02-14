@@ -13,12 +13,6 @@
         {
             $this->template->content = View::factory('galleri/index');
         }
-        
-        public function before()
-        {
-            parent::before();
-            $this->template->sidebar = View::factory('sidebar');
-        }
     }
     
 /* End of file galleri.php */

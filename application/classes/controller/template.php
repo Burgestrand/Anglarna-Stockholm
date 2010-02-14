@@ -19,6 +19,11 @@
             
             $this->messages += Arr::get($_SESSION, 'messages', array());
             $_SESSION['messages'] = &$this->messages;
+            
+            if ($this->template instanceof View)
+            {
+                $this->template->sidebar = View::factory('sidebar');
+            }
         }
         
         /**

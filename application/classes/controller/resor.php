@@ -18,7 +18,6 @@
         {
             parent::before();
             $this->template->title = 'Resor anordnade av Änglarna Stockholm';
-            $this->template->sidebar = View::factory('sidebar');
         }
     }
     
