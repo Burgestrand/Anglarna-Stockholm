@@ -1,6 +1,6 @@
 <h1>Inbjudan hos Änglarna Stockholm</h1>
 <p>
-    Du har blivit erbjuden att registrera en användare på <a href="http://stockholm.anglarna.se/">Änglarna Stockholms hemsida</a> av <?php echo html::chars($inviter) ?>.
+    Du har blivit erbjuden att registrera en användare på Änglarna Stockholms hemsida av <?php echo html::chars($inviter) ?>.
 </p>
 <?php
     if ( ! empty($message)):
