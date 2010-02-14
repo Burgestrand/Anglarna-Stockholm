@@ -4,6 +4,6 @@
      */
     return array(
         'email' => array(
-            'unique' => 'Ängeln har redan blivit inbjuden'
+            'unique' => 'Ängeln har redan blivit inbjuden.'
         ),
     );
