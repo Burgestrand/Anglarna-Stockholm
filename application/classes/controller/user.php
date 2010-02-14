@@ -29,6 +29,7 @@
             {
                 
             }
+            $this->message_add('Jag har inte gjort den här funktionen ännu, men den är på gång.', 'error');
             
             $this->template->content = View::factory('user/recover');
         }
@@ -70,7 +71,7 @@
         public function action_invite()
         {
             // Make sure we have these roles
-            if ( ! $this->auth->has_role('login', 'ängel'))
+            if ( ! $this->auth->has_roles(array('login', 'ängel')))
             {
                 $this->message_add('Bara inloggade <em>änglar</em> får bjuda in nya medlemmar!', 'error');
                 $this->request->redirect_back();
@@ -137,7 +138,7 @@
         {
             $this->auth->logout();
             $this->message_add('Du har nu loggats ut.');
-            $this->request->redirect('/');
+            $this->request->redirect_back('/');
         }
         
         /**
@@ -217,10 +218,10 @@
                     // Welcome message and redirect to control panel
                     $this->message_add(sprintf(
                         'Välkommen, %s! Du är nu registrerad och inloggad.
-                        Glöm inte att besöka det stängda forumet!',
+                        Jag tog mig också friheten att dirigera dig till forumet.',
                         html::chars($user->username))); // TODO: Make message
                     
-                    $this->request->redirect('user/view', 303);
+                    $this->request->redirect('forum', 303);
                 }
                 catch (Exception $e)
                 {
@@ -239,6 +240,8 @@
                         $this->message_add($error, 'error');
                     }
                 }
+                
+                $this->request->redirect($this->request->uri(), 303);
             }
             
             $this->template->content = View::factory('user/register')
