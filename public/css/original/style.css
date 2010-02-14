@@ -30,10 +30,30 @@ body
 { display: none; }
 .clear
 { clear: both; }
-li
-{ list-style-position: inside !important; }
+
+/* lists */
+ul li, ol li
+{ list-style-position: inside; }
 dl, ul, ol
 { margin: 0 .5em .5em; }
+
+/* links */
+a
+{
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+a:link
+{ color: #369; }
+a:visited
+{ color: #369; }
+a:hover
+{
+	border: 0;
+    outline: 1px dotted;
+}
+a:active
+{ color: #090; }
 
 /*
  * -------------------------------------------------------------------------
@@ -55,6 +75,24 @@ dl, ul, ol
     min-height: 100%;
 }
 
+/* Header */
+.panel ~ .main > .header { padding-top: 2em; } /* panel push-down */
+.main > .header 
+{
+    background: #147;
+    border-bottom: 1px solid;
+	text-align: center;
+}
+.main > .header > a
+{
+	border: 0;
+	display: block;
+	height: 107px;
+	margin: 0 auto;
+	width: 746px;
+	position: relative;
+}
+
 /* Body */
 .body 
 {
@@ -74,6 +112,15 @@ dl, ul, ol
     overflow: hidden;
     padding: .5em .5em 0 0;
     width: 26%;
+}
+
+
+/* Footer */
+.footer
+{
+	margin: 0;
+	padding: 1em 0;
+	text-align: center;
 }
 
 /*
@@ -112,50 +159,27 @@ dl, ul, ol
 	}
 
 
-/* Header */
-.panel ~ .main > .header { padding-top: 2em; } /* panel push-down */
-.main > .header 
-{
-    background: #147;
-    border-bottom: 1px solid;
-	text-align: center;
-}
-
-a.logo
-{
-	border: 0;
-	display: block;
-	height: 107px;
-	margin: 0 auto;
-	width: 746px;
-	position: relative;
-}
-.nav.pages
-{
-	border-width: 1px 0 0 0;
-	margin-bottom: 0;
-}
-	.nav.pages li:first-child a
-	{
-		margin-left: .5em;
-	}
-
-
 /* Navigation */
 .nav 
 {
-    background: #369;
-	border: 1px solid;
+	float: left;
+	left: 50%;
     margin: 0 0 .5em 0;
     font-size: 120%;
-    overflow: hidden;
     position: relative;
+	overflow: visible;
+}
+.nav + *
+{
+	clear: left;
 }
 	.nav li 
 	{
 		float: left;
+		left: -50%;
 		list-style-type: none;
 		margin-right: 1em;
+		position: relative;
 	}
 	.nav li a 
 	{
@@ -208,7 +232,6 @@ a.logo
 		background: #CC2929;
 		color: white;
 	}
-
 	.message.info
 	{
 		background: #369;
@@ -218,36 +241,31 @@ a.logo
 		{
 			color: #adf;
 		}
+		
 
 /*
  * -------------------------------------------------------------------------
- * =& Links
+ * =& Widget Tweaking
  * -------------------------------------------------------------------------
  */
 
 
-a
+.nav.site
 {
-    border-bottom: 1px solid;
-    text-decoration: none;
+	background: #369;
+	border-top: 1px solid;
+	left: 0;
+	margin: 0;
+	width: 100%; /* some strangeness with float */
 }
-a:link
-{
-    color: #369;
-}
-a:visited
-{
-    color: #369;
-}
-a:hover
-{
-	border: 0;
-    outline: 1px dotted;
-}
-a:active
-{
-    color: #090;
-}
+	.nav.site li
+	{
+		left: 0;
+	}
+	.nav.site li:first-child
+	{
+		margin-left: .5em;
+	}
 
 /*
  * -------------------------------------------------------------------------
@@ -273,13 +291,13 @@ label
 }
 label input, label textarea
 {
-	/* voodoo */
+	/* voodoo-fix */
 	margin: .2em 0 .5em;
 	padding: .2em;
 }
 input[type="submit"]
 {
-	background: #147 url('img/stripes.png');
+	background: #369 url('img/stripes.png');
 	border: 1px solid black;
 	color: white;
 	cursor: pointer;
@@ -316,7 +334,7 @@ input[type="submit"]:active
 .about img
 {
 	float: left;
-	margin-right: 1em;
+	margin: 0 1em .5em 0;
 }
 
 /*
@@ -349,11 +367,22 @@ p.meta
 		clear: both;
 	}
 
+/* Forum Selection */
+.nav.forums
+{
+}
+	.nav.forums li
+	{
+		background: #369;
+		border: 1px solid;
+	}
+
 /* Paging */
 .nav.paging
 {
 	background: inherit;
 	border: 0;
+	font-size: 1em;
 	margin: 1.5em 0;
 	overflow: visible;
 	text-align: center;
