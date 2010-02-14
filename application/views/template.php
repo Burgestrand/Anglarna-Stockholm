@@ -15,14 +15,14 @@
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/base/base-min.css">
         
         <!-- CSS Styles -->
-        <link rel="stylesheet" href="/css/original/style.css" type="text/css" media="screen" title="Original">
+        <link rel="stylesheet" href="<?php echo url::site('css/original/style.css') ?>" type="text/css" media="screen" title="Original">
     </head>
     <?php flush(); ?> 
     <body>
         <?php echo View::factory('panel') ?>
         <div class="section main">
             <div class="header">
-                <a class="logo" href="/"><img src="/img/header.jpg" alt="Änglarna Stockholm" width="746" height="107"></a>
+                <a class="logo" href="<?php echo url::site('/') ?>"><img src="<?php echo url::site('img/header.jpg') ?>" alt="Änglarna Stockholm" width="746" height="107"></a>
                 <?php echo View::factory('navigation')->set('links', array('start', 'forum', 'kontakt')) ?>
                 <div class="clear"></div>
             </div>

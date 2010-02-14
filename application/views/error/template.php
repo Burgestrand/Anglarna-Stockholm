@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/reset-fonts/reset-fonts.css"> 
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/base/base-min.css">
         
-        <link rel="stylesheet" href="/css/error.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="stylesheet" href="<?php echo url::site('/css/error.css') ?>" type="text/css" media="screen" charset="utf-8">
     </head>
     <body>
         <h1><?php echo $title ?></h1>
