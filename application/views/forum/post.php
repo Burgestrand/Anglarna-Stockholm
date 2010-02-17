@@ -1,12 +1,21 @@
 <p class="meta">
     <?php
+        // authentic author?
+        $guest = ! $post->user->id || 
+                 $post->user->load()->username !== $post->author;
         
-        echo $post->user->id ? html::chars($post->user->load()->username)
-                             : html::chars($post->author) . ' (<strong>Gäst</strong>)';
+        echo html::chars($post->author);
+        $guest AND printf(' (<strong>%s</strong>)', __('Guest'));
         
         if (Auth::instance()->has_roles('moderator'))
         {
-            printf(' (%s)', $post->ip);
+            echo ' (';
+            if ($guest && $post->user->id)
+            {
+                echo $post->user->username . '@';
+            }
+            echo $post->ip;
+            echo ')';
         }
     ?>:
     <span class="date"><?php echo $post->created; ?></span>

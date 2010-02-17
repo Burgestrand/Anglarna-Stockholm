@@ -2,6 +2,7 @@
     
     return array(
         'Not Found' => 'Sidan kan inte hittas',
+        'Guest' => 'Gäst',
     );
     
 /* End of file se.php */
