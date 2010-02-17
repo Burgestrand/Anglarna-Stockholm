@@ -218,26 +218,26 @@ a:active
 
 
 /* Messages */
-.message
+ul.message
 {
     border: 1px solid #666;
     font-size: 1.2em;
     margin: 0 0 .5em;
     padding: .5em 1em;
 }
-	.message li
+	ul.message li
 	{ list-style: none; }
-	.message.error
+	ul.message.error
 	{
 		background: #CC2929;
 		color: white;
 	}
-	.message.info
+	ul.message.info
 	{
 		background: #369;
 		color: white;
 	}
-		.message.info a
+		ul.message.info a
 		{
 			color: #adf;
 		}
@@ -353,6 +353,11 @@ input[type="submit"]:active
 		list-style: none !important;
 		margin: 0;
 		padding: .5em 0;
+	}
+	.posts .message /* content */
+	{
+		overflow: auto;
+		white-space: pre-wrap;
 	}
 
 p.meta
