@@ -30,21 +30,21 @@
                     if ( ! Validate::email($from['e-mail']))
                     {
                         $from['name'] .= " ({$from['e-mail']})";
-                        $from['e-mail'] = 'kim@burgestrand.se';
+                        $from['e-mail'] = 'svara-inte@anglarna.se';
                     }
                     
-                    $sent = Email::send('kim@burgestrand.se', // till
+                    $sent = Email::send('stockholm@anglarna.se', // till
                                         array($from['e-mail'], $from['name']), // från
-                                        '[Änglarna Stockholm] Meddelande',
+                                        '[Änglarna Stockholm] Meddelande från kontaktsidan',
                                         $message, TRUE);
                     
                     if ($sent >= 1)
                     {
-                        $this->message_add('Ditt meddelande har skickats till webmaster!');
+                        $this->message_add('Ditt meddelande har skickats till ' . html::mailto('stockholm@anglarna.se') . '!');
                     }
                     else
                     {
-                        $this->message_add('Något blev fel. Försök igen eller skicka till ' . html::mailto('stockholm@anglarna.se') . ' istället.', 'error');
+                        $this->message_add('Något blev fel. Försök igen eller skicka ett vanligt mail till ' . html::mailto('stockholm@anglarna.se') . ' istället.', 'error');
                     }
                 }
                 else

@@ -1,10 +1,9 @@
 <div class="box">
-    <h2>Kontakta webmaster</h2>
+    <h2>Kontakta Änglarna Stockholm</h2>
     <p>
-        Det här formuläret är till för att kontakta <em>webmaster</em> om
-        saker som rör hemsidan, forumet mm. Handlar det om något annat är
-        så får du gärna skicka ett mail till <?php echo html::mailto('stockholm@anglarna.se') ?>
-        istället.
+        Det här formuläret är ett alternativ till att skicka ett mail till
+        Änglarna Stockholm direkt. Det går lika bra att skicka ett mail
+        till <?php echo html::mailto('stockholm@anglarna.se') ?>.
     </p>
     <?php echo form::open('kontakt') ?>
         <dl>
