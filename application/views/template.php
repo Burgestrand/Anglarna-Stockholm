@@ -4,11 +4,7 @@
         <meta http-equiv="Content-type" content="text/html;charset=utf-8">
         <title><?php echo html::chars($title) ?></title>
         
-        <meta name="author" content="">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        
-        <link rel="icon" type="image/png" href="/favicon.png">
+        <link rel="icon" type="image/png" href="<?php echo url::site('favicon.png') ?>">
         
         <!-- YUI (reset, base) -->
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/reset-fonts/reset-fonts.css"> 
