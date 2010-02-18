@@ -15,7 +15,7 @@
     </head>
     <?php flush(); ?> 
     <body>
-        <?php echo View::factory('panel') ?>
+        <?php echo View::factory('user/panel') ?>
         <div class="section main">
             <div class="header">
                 <a class="logo" href="<?php echo url::site('/') ?>"><img src="<?php echo url::site('img/header.jpg') ?>" alt="Änglarna Stockholm" width="746" height="107"></a>

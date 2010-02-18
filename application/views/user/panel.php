@@ -14,12 +14,11 @@
 ?>
 <div class="section panel">
     <div class="wrap">
-        <p>
+        <p class="status">
             Du är inloggad som <a><?php echo html::chars($user->username) ?></a>
-            
-            <span class="actions">
-            <?php echo html::anchor('user/logout', '[ Logga ut ]')?>
-            </span>
+        </p>
+        <p class="actions">
+            <?php echo html::anchor('user/logout', '[ Logga ut ]') ?>
         </p>
     </div>
 </div>
