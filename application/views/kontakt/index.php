@@ -20,6 +20,6 @@
         
             <dt><label>Meddelande: <textarea name="message" rows="4" cols="80" class="voodoo"></textarea></label></dt>
         </dl>
-        <p><input type="submit" value="Skicka"></p>
+        <p><input type="submit" value="Skicka" class="voodoo"></p>
     </form>
 </div>
