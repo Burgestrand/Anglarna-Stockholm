@@ -45,11 +45,9 @@ a
 }
 a:link
 { color: #369; }
-a:visited
-{ color: #369; }
 a:hover
 {
-	border: 0;
+    border: 0;
     outline: 1px dotted;
 }
 a:active
@@ -81,16 +79,16 @@ a:active
 {
     background: #147;
     border-bottom: 1px solid;
-	text-align: center;
+    text-align: center;
 }
 .main > .header > a
 {
-	border: 0;
-	display: block;
-	height: 107px;
-	margin: 0 auto;
-	width: 746px;
-	position: relative;
+    border: 0;
+    display: block;
+    height: 107px;
+    margin: 0 auto;
+    width: 746px;
+    position: relative;
 }
 
 /* Body */
@@ -99,11 +97,11 @@ a:active
     clear: both;
     padding: .5em .5em 2em;
 }
-	.body.sidebar /* body followed by sidebar */
-	{
-		float: left;
-		width: 70%;
-	}
+    .body.sidebar /* body followed by sidebar */
+    {
+        float: left;
+        width: 70%;
+    }
 
 /* Sidebar */
 .aside 
@@ -118,9 +116,9 @@ a:active
 /* Footer */
 .footer
 {
-	margin: 0;
-	padding: 1em 0;
-	text-align: center;
+    margin: 0;
+    padding: 1em 0;
+    text-align: center;
 }
 
 /*
@@ -136,63 +134,67 @@ a:active
     background: #147;
     border-bottom: .4em solid #0b3e6f;
     color: white;
+    left: 0;
     position: fixed;
+    right: 0;
     top: 0;
     overflow: hidden;
-    width: 100%;
     z-index: 99;
 }
     .panel p 
-	{
-        line-height: 2em; /* .panel.height */
-        max-width: 100%;
+    {
+        line-height: 2em;
+        min-height: 1px;
         margin: 0 1em;
-	}
+    }
     .panel a 
-	{
+    {
         border: 0;
         color: #9CF !important; /* avoid pseudoclass coloring */
-	}
+    }
+    .panel .status
+    {
+        float: left;
+    }
     .panel .actions
-	{
-		float: right;
-	}
-
+    {
+        float: right;
+    }
 
 /* Navigation */
 .nav 
 {
-	float: left;
-	left: 50%;
+    float: left;
+    left: 50%;
     margin: 0 0 .5em 0;
     font-size: 120%;
     position: relative;
-	overflow: visible;
+    overflow: visible;
 }
 .nav + *
 {
-	clear: left;
+    clear: left;
 }
-	.nav li 
-	{
-		float: left;
-		left: -50%;
-		list-style-type: none;
-		margin-right: 1em;
-		position: relative;
-	}
-	.nav li a 
-	{
-		border: 0;
-		color: white;
-		display: block;
-		padding: .3em .8em .1em;
-	}
-	.nav li.active a 
-	{
-		background: white;
-		color: #147;
-	}
+    .nav li 
+    {
+        float: left;
+        left: -50%;
+        list-style-type: none;
+        margin-right: 1em;
+        position: relative;
+    }
+    .nav li a 
+    {
+        border: 0;
+        color: white;
+        display: block;
+        padding: .3em .8em .1em;
+    }
+    .nav li.active a 
+    {
+        background: white;
+        color: #147;
+    }
 
 
 /* Box */
@@ -200,21 +202,21 @@ a:active
 {
     border: 1px solid;
     margin-bottom: .5em;
-    overflow: auto;
+    min-height: 1px;
     padding: 0 .5em;
     width: auto;
 }
-	.box > *:first-child /* DANGER?! */
-	{
-	    background: #369;
-	    border-bottom: 1px solid #333;
-	    color: white;
-	    font-size: 120%;
-	    font-weight: normal;
-	    letter-spacing: 1px;
-	    margin: 0 -.42em .42em;
-	    padding: .2em .5em .2em;
-	}
+    .box > *:first-child /* DANGER?! IE6 fail */
+    {
+        background: #369;
+        border-bottom: 1px solid #333;
+        color: white;
+        font-size: 120%;
+        font-weight: normal;
+        letter-spacing: 1px;
+        margin: 0 -.42em .42em;
+        padding: .2em .5em .2em;
+    }
 
 
 /* Messages */
@@ -225,23 +227,23 @@ ul.message
     margin: 0 0 .5em;
     padding: .5em 1em;
 }
-	ul.message li
-	{ list-style: none; }
-	ul.message.error
-	{
-		background: #CC2929;
-		color: white;
-	}
-	ul.message.info
-	{
-		background: #369;
-		color: white;
-	}
-		ul.message.info a
-		{
-			color: #adf;
-		}
-		
+    ul.message li
+    { list-style: none; }
+    ul.message.error
+    {
+        background: #CC2929;
+        color: white;
+    }
+    ul.message.info
+    {
+        background: #369;
+        color: white;
+    }
+        ul.message.info a
+        {
+            color: #adf;
+        }
+        
 
 /*
  * -------------------------------------------------------------------------
@@ -252,20 +254,20 @@ ul.message
 
 .nav.site
 {
-	background: #369;
-	border-top: 1px solid;
-	left: 0;
-	margin: 0;
-	width: 100%; /* some strangeness with float */
+    background: #369;
+    border-top: 1px solid;
+    left: 0;
+    margin: 0;
+    width: 100%; /* some strangeness with float */
 }
-	.nav.site li
-	{
-		left: 0;
-	}
-	.nav.site li:first-child
-	{
-		margin-left: .5em;
-	}
+    .nav.site li
+    {
+        left: 0;
+    }
+    .nav.site li:first-child
+    {
+        margin-left: .5em;
+    }
 
 /*
  * -------------------------------------------------------------------------
@@ -280,48 +282,46 @@ form li
 { list-style: none; }
 form dd
 {
-	color: #999;
-	margin: 0 0 .5em 0;
+    color: #999;
+    margin: 0 0 .5em 0;
 }
 label
 {
-	color: #666;
-	font-weight: bold;
-	width: 98%;
+    color: #666;
+    font-weight: bold;
 }
 label input, label textarea
 {
-	/* voodoo-fix */
-	margin: .2em 0 .5em;
-	padding: .2em;
+    /* voodoo-fix */
+    margin: .2em 0 .5em;
+    padding: .2em;
 }
 input[type="submit"]
 {
-	background: #369 url('img/stripes.png');
-	border: 1px solid black;
-	color: white;
-	cursor: pointer;
-	letter-spacing: 1px;
-	font-size: 120%;
-	font-weight: bold;
-	text-shadow: black 1px 1px 1px;
-	padding: .2em 0;
-	width: 100%;
+    background: #369 url('img/stripes.png');
+    border: 1px solid black;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 120%;
+    font-weight: bold;
+    text-shadow: black 1px 1px 1px;
+    padding: .2em 0;
 }
 input[type="submit"]:active
 {
-	background-color: #693;
+    background-color: #693;
 }
 /* http://stackoverflow.com/questions/1030793/input-with-displayblock-is-not-a-block-why-not/1033745#1033745 */
 .voodoo
 {
-	display: block;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-khtml-box-sizing: border-box;
-	width: 100%;
+    display: block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -khtml-box-sizing: border-box;
+    width: 100%;
 }
 
 /*
@@ -333,8 +333,8 @@ input[type="submit"]:active
 
 .about img
 {
-	float: left;
-	margin: 0 1em .5em 0;
+    float: left;
+    margin: 0 1em .5em 0;
 }
 
 /*
@@ -346,63 +346,64 @@ input[type="submit"]:active
 /* Posts */
 .posts
 {
-	margin: 0;
+    margin: 0;
 }
-	.posts li
-	{
-		list-style: none !important;
-		margin: 0;
-		padding: .5em 0;
-	}
-	.posts .message /* content */
-	{
-		overflow: auto;
-		white-space: pre-wrap;
-	}
+    .posts li
+    {
+        list-style: none !important;
+        margin: 0;
+        padding: .5em 0;
+    }
+    .posts .message /* content */
+    {
+        overflow: auto;
+        white-space: pre-wrap;
+    }
 
 p.meta
 {
-	border-bottom: 1px solid #ddd;
-	color: #999;
-	margin: 0 0 .2em;
+    border-bottom: 1px solid #ddd;
+    color: #999;
+    margin: 0 0 .2em;
 }
-	p.meta .date
-	{
-		float: right;
-	}
-	p.meta + *
-	{
-		clear: both;
-	}
+    p.meta .date
+    {
+        display: inline-block;
+        float: right;
+    }
+    p.meta + *
+    {
+        clear: both;
+    }
 
 /* Forum Selection */
 .nav.forums
 {
 }
-	.nav.forums li
-	{
-		background: #369;
-		border: 1px solid;
-	}
+    .nav.forums li
+    {
+        background: #369;
+        border: 1px solid;
+    }
 
 /* Paging */
 .nav.paging
 {
-	background: inherit;
-	border: 0;
-	font-size: 1em;
-	margin: 1.5em 0;
-	overflow: visible;
-	text-align: center;
+    background: inherit;
+    border: 0;
+    font-size: 1em;
+    margin: 1.5em 0;
+    overflow: visible;
+    text-align: center;
 }
-	.nav.paging li
-	{
-		display: inline;
-		float: none;
-		width: auto;
-	}
-		.nav.paging li a
-		{
-			color: #09c;
-			display: inline;
-		}
+    .nav.paging li
+    {
+        display: inline;
+        float: none;
+        width: auto;
+    }
+        .nav.paging li a
+        {
+            color: #09c;
+            display: inline;
+        }
