@@ -19,7 +19,7 @@
             
             if (is_null($value))
             {
-                return inet_pton($_SERVER['REMOTE_ADDR']);
+                return inet_pton(Request::$client_ip);
             }
             else
             {
