@@ -19,8 +19,8 @@
             $roles = $forum->roles->as_array(NULL, 'name');
             if ( ! $this->auth->has_roles($roles))
             {
-                $this->message_add('Du har inte tillgång till det angivna forumet.', 'error');
-                $this->request->redirect('/', 307);
+                // Assume user always has access to default forum!!
+                $this->request->redirect('forum', 307);
             }
             
             $this->template->content = $content = View::factory('forum/index');
