@@ -12,6 +12,9 @@
         
         <!-- CSS Styles -->
         <link rel="stylesheet" href="<?php echo url::site('css/original/style.css') ?>" type="text/css" media="screen" title="Original">
+        <!--[if lt IE 8]>
+            <link rel="stylesheet" href="<?php echo url::site('css/original/ie7.css') ?>" type="text/css" media="screen">
+        <![endif]-->
     </head>
     <?php flush(); ?> 
     <body>
@@ -49,23 +52,8 @@
         </div>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="/js/main.js" type="text/javascript" charset="utf-8"></script>
+        <script src="<?php echo url::site('js/main.js') ?>" type="text/javascript" charset="utf-8"></script>
         <!--[if lt IE 8]>
-        <style type="text/css" media="screen">
-            .nav a
-            {
-                color: white;
-            }
-            .posts .meta
-            {
-                margin: 0
-            }
-            .posts .message
-            {
-                white-space: pre;
-                word-wrap: break-word;
-            }
-        </style>
         <script type="text/javascript">
             $('.voodoo').each(function() {
                 var width = $(this).width()

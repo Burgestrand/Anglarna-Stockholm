@@ -1,0 +1,13 @@
+.nav a
+{
+    color: white;
+}
+.posts .meta
+{
+    margin: 0
+}
+.posts .message
+{
+    white-space: pre;
+    word-wrap: break-word;
+}
