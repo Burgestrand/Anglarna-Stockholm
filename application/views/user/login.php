@@ -6,7 +6,7 @@
         <dt><label>Lösenord <input type="password" name="password" class="voodoo" tabindex="5"></label></dt>
             <dd>
                 Glömt ditt lösenord? Oroa dig inte, vi kan 
-                <a href="user/recover">skicka ett nytt till din e-mail</a>.
+                <a href="<?php echo url::site('user/recover') ?>">skicka ett nytt till din e-mail</a>.
             </dd>
     </dl>
     <p>
