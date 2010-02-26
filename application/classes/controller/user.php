@@ -96,7 +96,7 @@
                     $email = View::factory('email/invite')
                              ->set('inviter', $user->username)
                              ->set('message', arr::get($_POST, 'message', ''))
-                             ->set('url', url::site("user/register/{$invite->token}", true));
+                             ->set('url', url::site("user/register?token={$invite->token}", true));
                     
                     // Send it!
                     Email::send($invite->email, 
@@ -155,9 +155,8 @@
                 {
                     $this->message_add('Fel användarnamn eller lösenord.', 'error');
                     $this->message_add(
-                        sprintf('Om du har glömt ditt lösenord kan vi 
-                                 <a href="/user/recover/%s">skicka ett nytt</a>!', 
-                                 rawurlencode($username)));
+                        sprintf('Om du har glömt ditt lösenord kan vi hjälpa dig ' 
+                                . html::anchor('user/recover', 'skaffa ett nytt lösenord') . '!'));
                 }
             }
             
@@ -167,9 +166,9 @@
         /**
          * Registration procedure (from a given invitation)
          */
-        public function action_register($token = NULL)
+        public function action_register()
         {
-            $this->auth->logged_in('admin') || $this->auth->logout();
+            $token = arr::get($_GET, 'token', NULL);
             
             if ( ! Model_Invite::valid($token))
             {
