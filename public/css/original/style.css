@@ -96,6 +96,7 @@ a:active
 {
     clear: both;
     padding: .5em .5em 2em;
+    position: relative;
 }
     .body.sidebar /* body followed by sidebar */
     {
@@ -355,6 +356,12 @@ input[type="submit"]:active
  * -------------------------------------------------------------------------
  */
 
+.panel + .main #posts
+{
+    margin-top: -2.75em;
+    position: absolute;
+}
+
 /* Posts */
 .posts
 {
@@ -404,7 +411,7 @@ p.meta
     background: inherit;
     border: 0;
     font-size: 1em;
-    margin: 1.5em 0;
+    padding: .75em 0;
     overflow: visible;
     text-align: center;
 }
