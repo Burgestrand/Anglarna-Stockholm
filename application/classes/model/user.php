@@ -19,16 +19,11 @@
             );
             
             // Fix fields
-            $username = $this->_fields['username'];
-            $username->min_length = 2;
-            $username->max_length = 50;
-            $username->rules = array();
+            $this->_fields['username'] = new Sprig_Field_Username;
             
             $email = $this->_fields['email'];
             $email->column = 'e-mail';
             $email->max_length = 255;
-            
-            unset($this->_fields['password_confirm']);
         }
         
         /**

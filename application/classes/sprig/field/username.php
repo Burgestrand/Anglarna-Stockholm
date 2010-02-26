@@ -10,6 +10,8 @@
     {
         public $min_length = 2;
         public $max_length = 50;
+        public $empty = FALSE;
+        public $unique = TRUE;
     }
     
 /* End of file username.php */
