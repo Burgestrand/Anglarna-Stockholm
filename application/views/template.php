@@ -22,7 +22,7 @@
         <div class="section main">
             <div class="header">
                 <a class="logo" href="<?php echo url::site('/') ?>"><img src="<?php echo url::site('img/header.jpg') ?>" alt="Änglarna Stockholm" width="746" height="107"></a>
-                <?php echo View::factory('navigation')->set('links', array('start', 'forum', 'kontakt')) ?>
+                <?php echo View::factory('navigation')->set('links', array('start', 'forum', 'resor', 'arkiv', 'galleri', 'kontakt')) ?>
                 <div class="clear"></div>
             </div>
             <hr class="hide">

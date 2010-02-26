@@ -9,4 +9,5 @@
         Enköping, Norrtälje, Södertälje är några områden där vi försöker
         serva änglar med information mm.
     </p>
+    <div class="clear"></div>
 </div>
