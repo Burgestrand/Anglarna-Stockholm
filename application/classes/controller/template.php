@@ -8,6 +8,14 @@
      */
     class Controller_Template extends Template_Controller_Template
     {
+        public function action_index()
+        {
+            if ($this->template instanceof View)
+            {
+                $this->template->content = View::factory("{$this->request->controller}/{$this->request->action}");
+            }
+        }
+        
         /**
          * Initializes Session, Auth and Messages
          */
