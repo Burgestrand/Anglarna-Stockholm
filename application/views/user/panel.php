@@ -18,7 +18,7 @@
             Du är inloggad som <?php echo html::anchor('user', html::chars($user->username)) ?>
         </p>
         <p class="actions">
-            <?php echo html::anchor('user/logout', '[ Logga ut ]') ?>
+            <?php echo html::anchor('user/logout?referrer=' . rawurlencode(Request::instance()->controller), '[ Logga ut ]') ?>
         </p>
     </div>
 </div>

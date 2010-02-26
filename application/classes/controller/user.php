@@ -191,7 +191,7 @@
         {
             $this->auth->logout();
             $this->message_add('Du har nu loggats ut.');
-            $this->request->redirect_back('/');
+            $this->request->redirect(arr::get($_GET, 'referrer', '/'));
         }
         
         /**
