@@ -15,7 +15,7 @@
 <div class="section panel">
     <div class="wrap">
         <p class="status">
-            Du är inloggad som <a><?php echo html::chars($user->username) ?></a>
+            Du är inloggad som <?php echo html::anchor('user', html::chars($user->username)) ?>
         </p>
         <p class="actions">
             <?php echo html::anchor('user/logout', '[ Logga ut ]') ?>

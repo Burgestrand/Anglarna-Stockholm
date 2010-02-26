@@ -10,13 +10,13 @@
         {
             if ( ! $this->auth->logged_in())
             {
-                $this->request->redirect_back();
+                $this->request->redirect('/');
             }
             else
             {
-                $username = $this->auth->get_user()->username;
-                $username = rawurlencode($username);
-                $this->request->redirect("user/view/{$username}");
+                $user = $this->auth->get_user();
+                $this->template->title = 'Information om ' . html::chars($user->username);
+                $this->template->content = View::factory('user/index')->set('user', $user);
             }
         }
         
