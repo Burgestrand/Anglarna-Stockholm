@@ -55,6 +55,7 @@
                 $this->request->redirect('kontakt', 303);
             }
             
+            $this->template->title = 'Kontakta Änglarna Stockholm';
             $this->template->content = View::factory('kontakt/index');
         }
     }
