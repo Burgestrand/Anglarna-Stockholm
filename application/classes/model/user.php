@@ -19,7 +19,10 @@
             );
             
             // Fix fields
-            $this->_fields['username'] = new Sprig_Field_Username;
+            $this->_fields['username'] = new Sprig_Field_Username(array(
+                'empty' => FALSE,
+                'unique' => TRUE,
+            ));
             
             $email = $this->_fields['email'];
             $email->column = 'e-mail';
