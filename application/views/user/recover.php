@@ -2,13 +2,13 @@
     <h2>Glömt ditt lösenord?</h2>
     <p>
         Kan du inte minnas ditt lösenord? Bara lugn, det händer alla någon
-        gång. Skriv in din e-mail och tryck på knappen så skickas ett nytt 
-        lösenord till din mailadress.
+        gång. Skriv in din e-mail och tryck på knappen så skickas instruktioner
+        om hur du löser det till din mailadress.
     </p>
     <dl>
-        <dt><label>Din e-mail: <input type="text" name="e-mail" class="voodoo"></label></dt>
+        <dt><label>Din E-Mail <input type="text" name="e-mail" class="voodoo"></label></dt>
             <dd>
-                Det här måste vara den mailadress som är kopplat till ditt konto.
+                Det här måste vara den mailadress som är registrerad till ditt konto.
             </dd>
     </dl>
     <p>

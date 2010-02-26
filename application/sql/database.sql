@@ -85,6 +85,15 @@ CREATE TABLE `users` (
    UNIQUE KEY (`autologin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- | User recovery table
+CREATE TABLE `user_recover` (
+   `token` char(40) not null,
+   `user_id` int(11) unsigned not null,
+   `expires` datetime not null,
+   PRIMARY KEY (`token`),
+   KEY `expires` (`expires`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- | User invites (for registrations)
 CREATE TABLE `invites` (
    `token` char(40) not null,

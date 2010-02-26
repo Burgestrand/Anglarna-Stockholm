@@ -24,13 +24,66 @@
          * Recover a lost password
          */
         public function action_recover()
-        {
+        {            
             if ( ! empty($_POST))
             {
+                $email = arr::get($_POST, 'e-mail', '');
+                $user = Sprig::factory('user', array('email', $email))->load();
                 
+                if ($user->loaded())
+                {
+                    // Create a new token
+                    $token = Sprig::factory('user_recover', array(
+                        'token' => sha1(uniqid('user-recover')),
+                        'user' => $user->id,
+                        'expires' => time() + 60 * 60, // one hour
+                    ))->create();
+                    
+                    // E-Mail information
+                    $email = View::factory('email/recover')
+                                 ->set('url', url::site("user/recover?token={$token->token}", TRUE));
+                                 
+                    // Send the e-mail!
+                    Email::send($user->email, 
+                                'stockholm@anglarna.se', 
+                                '[Änglarna Stockholm] Återställning av konto',
+                                (string)$email, TRUE);
+                    
+                    // Information
+                    $this->message_add('Instruktioner om hur du återställer ditt konto har skickats till ' 
+                                       . html::chars($user->email) . '!');
+                }
+                else
+                {
+                    $this->message_add(sprintf('Det finns inget konto registrerat till %s', html::chars($email)), 'error');
+                }
+                
+                $this->request->redirect_back('/', 303);
             }
-            $this->message_add('Jag har inte gjort den här funktionen ännu, men den är på gång.', 'error');
+            elseif ( ! empty($_GET['token']))
+            {
+                // Load token
+                $token = Sprig::factory('user_recover', array('token' => $_GET['token']))->load();
+                
+                if ($token->loaded() && gmdate('Y-m-d H:i:s') < $token->expires)
+                {
+                    // Force login user
+                    $this->auth->force_login($token->user->load());
+                    
+                    // Delete token
+                    $token->delete();
+                    
+                    // Redirect to control panel
+                    $this->message_add('Du är nu inloggad. Glöm inte att byta lösenord!');
+                    $this->request->redirect('user', 303);
+                }
+                else
+                {
+                    $this->message_add('Aktiveringslänken är felaktig eller för gammal.', 'error');
+                }
+            }
             
+            $this->template->title = 'Återställning av användarkonto';
             $this->template->content = View::factory('user/recover');
         }
         
