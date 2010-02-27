@@ -14,7 +14,7 @@
             }
             else
             {
-                $user = $this->auth->get_user()->load();
+                $user = $this->auth->get_user();
                 
                 if ($_POST)
                 {
