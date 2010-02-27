@@ -46,7 +46,12 @@
          * Recover a lost password
          */
         public function action_recover()
-        {            
+        {
+            if ($this->auth->logged_in())
+            {
+                $this->request->redirect('user');
+            }
+                  
             if ( ! empty($_POST))
             {
                 $email = arr::get($_POST, 'e-mail', '');
