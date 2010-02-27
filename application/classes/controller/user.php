@@ -14,7 +14,29 @@
             }
             else
             {
-                $user = $this->auth->get_user();
+                $user = $this->auth->get_user()->load();
+                
+                if ($_POST)
+                {
+                    $values = arr::extract($_POST, array('email', 'password'), NULL);
+                    $values = array_filter($values, create_function('$x', 'return ! empty($x);'));
+                    
+                    try
+                    {
+                        $user = $user->values($values)->update();
+                        $this->message_add('Din användare har uppdaterats.');
+                    }
+                    catch (Validate_Exception $e)
+                    {
+                        foreach ($e->array->errors('user/index') as $message)
+                        {
+                            $this->message_add($message, 'error');
+                        }
+                    }
+                    
+                    $this->request->reload();
+                }
+                
                 $this->template->title = 'Information om ' . html::chars($user->username);
                 $this->template->content = View::factory('user/index')->set('user', $user);
             }
