@@ -226,7 +226,7 @@ ul.message
     border: 1px solid #666;
     font-size: 1.2em;
     margin: 0 0 .5em;
-    padding: .5em 1em;
+    padding: .5em .5em;
 }
     ul.message li
     { list-style: none; }
