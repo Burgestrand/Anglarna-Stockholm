@@ -23,7 +23,7 @@
                     
                     try
                     {
-                        $user = $user->values($values)->update();
+                        $user = $user->values($user->check($values))->update();
                         $this->message_add('Din användare har uppdaterats.');
                     }
                     catch (Validate_Exception $e)
@@ -50,7 +50,7 @@
             if ( ! empty($_POST))
             {
                 $email = arr::get($_POST, 'e-mail', '');
-                $user = Sprig::factory('user', array('email', $email))->load();
+                $user = Sprig::factory('user', array('email' => $email))->load();
                 
                 if ($user->loaded())
                 {
