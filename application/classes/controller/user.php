@@ -14,16 +14,31 @@
             }
             else
             {
-                $user = $this->auth->get_user()->load();
+                $user = $this->auth->get_user();
                 
                 if ($_POST)
                 {
                     $values = arr::extract($_POST, array('email', 'password'), NULL);
                     $values = array_filter($values, create_function('$x', 'return ! empty($x);'));
                     
+                    /**
+                     * We have huge problems here:
+                     * - $user->check() throws exception if $user->email is the same (since it is not unique)
+                     * - $user->values($values) sets values but does not rollback if update() throws exception
+                     * - clone $user does not update $user in session if update is successfull
+                     * - if $user is updated after update (using values); session user changed() array is forever set
+                     * 
+                     * Solution: remove email if its’ the same as the current email (to avoid unique exception)
+                     */
+                    if ($values['email'] === $user->email)
+                    {
+                        unset($values['email']);
+                    }
+                    
                     try
                     {
-                        $user = $user->values($values)->update();
+                        // Update user
+                        $user->values($user->check($values))->update();
                         $this->message_add('Din användare har uppdaterats.');
                     }
                     catch (Validate_Exception $e)
@@ -55,7 +70,7 @@
             if ( ! empty($_POST))
             {
                 $email = arr::get($_POST, 'e-mail', '');
-                $user = Sprig::factory('user', array('email', $email))->load();
+                $user = Sprig::factory('user', array('email' => $email))->load();
                 
                 if ($user->loaded())
                 {
