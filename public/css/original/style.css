@@ -21,7 +21,7 @@ html,body
 body
 {
     color: #333;
-    font: 89%/1.25 'Museo Sans', 'Helvetica', 'Verdana', sans-serif;
+    font: 82%/1.25 'Museo Sans', 'Helvetica', 'Verdana', sans-serif;
     margin: 0;
 }
 
@@ -40,11 +40,10 @@ dl, ul, ol
 /* links */
 a
 {
-    border-bottom: 1px solid;
-    text-decoration: none;
+
 }
-a:link
-{ color: #369; }
+a:link,a:visited
+{ color: #006bbb; }
 a:hover
 {
     border: 0;
@@ -52,6 +51,13 @@ a:hover
 }
 a:active
 { color: #090; }
+
+/* headlines */
+h1, h2, h3, h4, h5, h6
+{
+    color: #006bbb;
+    margin-bottom: 0;
+}
 
 /*
  * -------------------------------------------------------------------------
@@ -77,7 +83,7 @@ a:active
 .panel ~ .main > .header { padding-top: 2em; } /* panel push-down */
 .main > .header 
 {
-    background: #147;
+    background: #369;
     border-bottom: 1px solid;
     text-align: center;
 }
@@ -148,10 +154,11 @@ a:active
         min-height: 1px;
         margin: 0 1em;
     }
-    .panel a 
+    .panel a
     {
         border: 0;
-        color: #9CF !important; /* avoid pseudoclass coloring */
+        color: #9CF;
+        text-decoration: none;
     }
     .panel .status
     {
@@ -190,6 +197,7 @@ a:active
         color: white;
         display: block;
         padding: .3em .8em .1em;
+        text-decoration: none;
     }
     .nav li.active a 
     {
@@ -209,7 +217,7 @@ a:active
 }
     .box > *:first-child /* DANGER?! IE6 fail */
     {
-        background: #369;
+        background: #006bbb;
         border-bottom: 1px solid #333;
         color: white;
         font-size: 120%;
@@ -255,7 +263,7 @@ ul.message
 
 .nav.site
 {
-    background: #369;
+    background: #006bbb;
     border-top: 1px solid;
     left: 0;
     margin: 0;
@@ -299,7 +307,7 @@ label input, label textarea
 }
 input[type="submit"]
 {
-    background: #369 url('img/stripes.png');
+    background: #006bbb url('img/stripes.png');
     border: 1px solid black;
     color: white;
     cursor: pointer;
@@ -401,7 +409,7 @@ p.meta
 }
     .nav.forums li
     {
-        background: #369;
+        background: #006bbb;
         border: 1px solid;
     }
 
