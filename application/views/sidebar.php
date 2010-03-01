@@ -19,12 +19,3 @@
         så lägger vi till dig!
     </p>
 </div>
-
-<div class="section tabellen box">
-    <h2>Tabellen</h2>
-    <p>
-        Vi har tidigare haft en tabell här på sidan, som vi har beslutat
-        att ta bort. Tills vidare finns en tabell hos
-        <a href="http://www.fotbollsallsvenskan.se/">fotbollsallsvenskan.se</a>.
-    </p>
-</div>
