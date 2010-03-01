@@ -5,7 +5,7 @@
      * @package     Änglarna STHLM
      * @category    Controllers
      * @author      Kim Burgestrand <kim@burgestrand.se>
-     * @license     http://www.gnu.org/licenses/lgpl-3.0.txt
+     * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
     class Controller_Error extends Controller_Template
     {

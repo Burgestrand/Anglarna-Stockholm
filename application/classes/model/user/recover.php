@@ -3,7 +3,7 @@
      * User recovery tokens
      *
      * @author      Kim Burgestrand
-     * @license     http://www.gnu.org/licenses/lgpl-3.0.txt
+     * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
     class Model_User_Recover extends Sprig
     {

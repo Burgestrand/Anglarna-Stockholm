@@ -4,7 +4,7 @@
      *
      * @package     Änglarna STHLM
      * @author      Kim Burgestrand
-     * @license     http://www.gnu.org/licenses/gpl-3.0.txt
+     * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
     class Model_Invite extends Sprig
     {

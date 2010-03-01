@@ -3,7 +3,7 @@
      * Static page
      *
      * @author      Kim Burgestrand
-     * @license     http://www.gnu.org/licenses/gpl-3.0.txt
+     * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
     class Controller_Arkiv extends Controller_Template
     {

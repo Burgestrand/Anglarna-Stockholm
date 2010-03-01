@@ -5,7 +5,7 @@
      * @package     Änglarna STHLM
      * @category    Logging
      * @author      Kim Burgestrand <kim@burgestrand.se>
-     * @license     http://www.gnu.org/licenses/lgpl-3.0.txt
+     * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
     class Log_File extends Kohana_Log_File
     {
