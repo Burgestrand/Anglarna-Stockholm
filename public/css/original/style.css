@@ -383,6 +383,7 @@ input[type="submit"]:active
     }
     .posts .message /* content */
     {
+        clear: both;
         overflow: auto;
         white-space: pre-wrap;
     }
@@ -398,9 +399,9 @@ p.meta
         display: inline-block;
         float: right;
     }
-    p.meta + *
+    p.meta strong
     {
-        clear: both;
+        color: #006bbb;
     }
 
 /* Forum Selection */
