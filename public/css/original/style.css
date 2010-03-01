@@ -69,6 +69,7 @@ h1, h2, h3, h4, h5, h6
 {
     height: auto;
     margin: 0 auto;
+    position: relative;
     width: 67.4em;
 }
 .main
@@ -123,9 +124,19 @@ h1, h2, h3, h4, h5, h6
 /* Footer */
 .footer
 {
+    bottom: 0;
+    color: #DDD;
+    height: 2em;
+    line-height: 2em;
     margin: 0;
-    padding: 1em 0;
+    position: absolute;
     text-align: center;
+    width: 100%;
+}
+.footer a
+{
+    color: #9CF;
+    text-decoration: none;
 }
 
 /*

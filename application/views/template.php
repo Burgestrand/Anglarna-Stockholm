@@ -49,8 +49,11 @@
                 }
             ?>
             <div class="clear"></div>
+            <p class="footer">
+                <?php echo html::anchor('om/hemsidan', 'om hemsidan') ?>
+            </p>
         </div>
-        
+
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="<?php echo url::site('js/jquery.textarearesizer.compressed.js') ?>" type="text/javascript" charset="utf-8"></script>
         <script src="<?php echo url::site('js/main.js') ?>" type="text/javascript" charset="utf-8"></script>
