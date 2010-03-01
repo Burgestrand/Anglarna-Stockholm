@@ -19,8 +19,9 @@
         <dt>Blåvitt</dt>
             <dd>
                 <ul>
-                    <li><a href="http://www.ifkgoteborg.se/">IFK Göteborg</a></li>
-                    <li><a href="http://www.anglarna.se/">Supporterklubben Änglarna</a></li>
+                    <li><a href="http://www.facebook.com/group.php?gid=5846573434">Änglarna Stockholm på Facebook</a></li>
+                    <li><a href="http://www.ifkgoteborg.se/">IFK Göteborgs</a></li>
+                    <li><a href="http://www.anglarna.se/">Supporterklubben Änglarnas</a></li>
                     <li><a href="http://www.svenskafans.com/fotboll/ifkgoteborg/">Svenska Fans — Alltid Blåvitt</a></li>
                     <li><a href="http://www.baraben.com">BaraBen</a></li>
                     <li><a href="http://web.comhem.se/~u96800871/index.htm">Kombarris GBG</a></li>
@@ -30,6 +31,12 @@
                     <li><a href="http://www.anglarnanord.tk/">Änglarna Nord</a></li>
                     <li><a href="http://hem.passagen.se/bolton/elig.html">ELIG</a></li>
                     <li><a href="http://www.angelz.net">BrownBombers</a></li>
+                </ul>
+            </dd>
+        <dt>Svensk Fotboll</dt>
+            <dd>
+                <ul>
+                    <li><a href="http://www.fotbollsallsvenskan.se/">Fotbollsallsvenskan.se</a> (tabell, matcher, mm)</li>
                 </ul>
             </dd>
     </dl>
