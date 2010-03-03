@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6
 .body 
 {
     clear: both;
-    padding: .5em .5em 2em;
+    padding: .5em .5em;
     position: relative;
 }
     .body.sidebar /* body followed by sidebar */
@@ -122,6 +122,10 @@ h1, h2, h3, h4, h5, h6
 
 
 /* Footer */
+.body, .aside
+{
+    padding-bottom: 2em; /* footer height */
+}
 .footer
 {
     bottom: 0;
