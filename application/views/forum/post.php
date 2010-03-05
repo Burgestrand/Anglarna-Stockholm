@@ -20,4 +20,4 @@
     ?>:
     <span class="date"><?php echo $post->created; ?></span>
 </p>
-<p class="message"><?php echo html::chars($post->message) ?></p>
+<p class="message"><?php echo Model_Post::stylize($post->message) ?></p>

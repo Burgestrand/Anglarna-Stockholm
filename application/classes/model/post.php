@@ -31,6 +31,14 @@
                 'created' => new Sprig_Field_Datetime,
             );
         }
+        
+        public static function stylize($string)
+        {
+            // Sanitize HTML
+            $string = html::chars($string);
+            
+            return $string;
+        }
     }
     
 /* End of file post.php */
