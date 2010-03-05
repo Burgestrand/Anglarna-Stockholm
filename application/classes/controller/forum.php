@@ -9,29 +9,19 @@
         /**
          * Views the given forum, or the first valid forum
          */
-        public function action_index()
+        public function action_index($forum)
         {
             // Load the current forum
-            $forum = $this->request->param('forum', 1);
-            $forum = Sprig::factory('forum', array('id' => $forum))->load();
+            $forum = Model_Forum::factory($forum)->load();
             
-            // Make sure the current user has access to the forum
-            $roles = $forum->roles->as_array(NULL, 'name');
-            if ( ! $this->auth->has_roles($roles))
-            {
-                // Assume user always has access to default forum!!
-                $this->request->redirect('forum', 307);
-            }
-            
+            // Load View data
             $this->template->content = $content = View::factory('forum/index');
+            
+            $content->forum = $this->request->param('forum');
             $content->forums = $this->forums();
-            
-            // Forum
-            $content->forum_id = $forum->id;
-            
-            // Display of posts
             $content->username = $this->auth->logged_in() ? $this->auth->get_user()->username : '';
             
+            // Forum posts
             $posts = Sprig::factory('post', array('forum' => $forum->id));
             $ipp = 10;
             $content->paging = $paging = html::paging(arr::get($_GET, 'page', 1), 
@@ -43,34 +33,16 @@
         /**
          * Post a new post in the current forum
          */
-        public function action_post()
+        public function action_post($forum)
         {
             if ( ! empty($_POST))
             {
-                // Fix the forum ID
-                $_POST['forum'] = (int) Arr::get($_POST, 'forum', 0);
-                
-                // Check forum access levels
-                $forum = Sprig::factory('forum', array('id' => $_POST['forum']))->load();
-                if ($forum->loaded())
-                {
-                    $roles = $forum->roles->as_array(NULL, 'name');
-                    if ( ! $this->auth->has_roles($roles))
-                    {
-                        $this->message_add('Du har inte tillgång till det angivna forumet.', 'error');
-                        $this->request->redirect_back('/', 307);
-                    }
-                }
-                
-                // Set up fields
+                $_POST['forum'] = Model_Forum::factory($forum)->load()->id;
                 $this->auth->logged_in() AND $_POST['user'] = $this->auth->get_user()->id;
                 
-                // Create post
-                $post = Sprig::factory('post', $_POST);
-                                
                 try
                 {
-                    $post->create();
+                    Sprig::factory('post', $_POST)->create();
                 }
                 catch (Validate_Exception $e)
                 {
@@ -109,7 +81,24 @@
         public function before()
         {
             parent::before();
-            $this->template->title = 'Änglarna Stockholms forum';
+            
+            $param = $this->request->param('forum');
+            $forum = Model_Forum::factory($param)->load();
+            
+            if ( ! $forum->loaded())
+            {
+                throw new Kohana_Exception('Forumet :forum existerar inte', array(
+                    ':forum' => $param
+                ));
+            }
+            
+            $roles = $forum->roles->as_array(NULL, 'name');
+            if ( ! $this->auth->has_roles($roles))
+            {
+                throw new Kohana_Exception('Otillräckliga privilegier för :forum', array(
+                    ':forum' => $param,
+                ));
+            }
         }
     }
     

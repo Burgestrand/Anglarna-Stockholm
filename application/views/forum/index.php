@@ -2,12 +2,12 @@
 <?php
     if (count($forums) > 1)
     {
-        echo View::factory('forum/navigation')->set('forums', $forums)->set('current', $forum_id);
+        echo View::factory('forum/navigation')->set('forums', $forums)->set('current', $forum);
     }
 ?> 
 
 <!-- Forum form -->
-<?php echo form::open('forum/post', array('class' => 'clear')) ?> 
+<?php echo form::open(Route::get('forum')->uri(array('action' => 'post', 'forum' => $forum)), array('class' => 'clear')) ?> 
     <dl>
         <dt>
             <label>Namn <input type="text" name="author" value="<?php echo $username ?>" maxlength="50" class="voodoo" tabindex="1"></label>
@@ -23,7 +23,7 @@
     <p>
         <input type="submit" value="Publicera inlägg" class="voodoo" tabindex="3">
     </p>
-    <input type="hidden" name="forum" value="<?php echo $forum_id ?>">
+    <input type="hidden" name="forum" value="<?php echo $forum ?>">
 </form>
 
 <!-- Paging -->

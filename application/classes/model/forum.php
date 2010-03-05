@@ -28,6 +28,19 @@
                 )),
             );
         }
+        
+        public static function factory($key, array $dummy = array())
+        {
+            $forum = parent::factory('forum');
+            return $forum->values(array(
+                $forum->unique_key($key) => $key,
+            ) + $dummy);
+        }
+        
+        public function unique_key($key)
+        {
+            return ctype_digit($key) ? 'id' : 'name';
+        }
     }
     
 /* End of file forum.php */

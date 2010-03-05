@@ -2,8 +2,11 @@
 <?php
     foreach ($forums as $forum)
     {
-        $active = $forum->id == $current ? ' class="active"' : '';
-        printf('<li%s>%s</li>', $active, html::anchor("forum/{$forum->id}", $forum->name));
+        $key    = $forum->{$forum->unique_key($current)};
+        $active = $key == $current ? ' class="active"' : '';
+        printf('<li%s>%s</li>', $active,
+               html::anchor(Route::get('forum')->uri(array('forum' => $key)), 
+                            $forum->name));
     }
 ?>
 </ul>
