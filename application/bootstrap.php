@@ -100,9 +100,11 @@
         ->defaults(array(
             'controller' => 'error',
             'action'     => 'error',
+            // params
             'status'     => 500,
         ));
     
+    Route::set('default', '<controller>(/<action>)', array('controller' => 'kontakt|user'));
     Route::set('forum', 'forum(/<forum>(/<action>))', array('forum' => '[^/]*'))
         ->defaults(array(
             'controller' => 'forum',
@@ -110,10 +112,13 @@
             'forum'      => 'Öppet Forum',
         ));
     
-    Route::set('default', '(<controller>(/<action>(/<id>)))')
+    Route::set('static', '<category>(/<page>)', array('category' => '[^/]*', 'page' => '.+'))
         ->defaults(array(
-            'controller' => 'start',
-			'action'	 => 'index'
+            'controller' => 'static',
+            'action'     => 'load',
+            // params
+            'category'   => 'start',
+            'page'       => 'index',
         ));
     
     /**
