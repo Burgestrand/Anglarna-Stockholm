@@ -14,20 +14,30 @@
          * If the referring page cannot be found it falls back to the
          * default, specified in the first parameter.
          * 
+         * It never redirects to an absolute URL, only relative ones.
+         * 
          * @param default
          * @param code HTTP status code (default: 303)
          * @return void
          */
         public function redirect_back($default = '/', $code = 303)
         {
-            if (empty(Request::$referrer))
+            // Referrer within GET parameters?
+            $referrer = arr::get($_GET, 'referrer', NULL);
+            
+            // Try the HTTP referrer
+            if ( ! $referrer)
             {
-                $this->redirect($default, $code);
+                $referrer = Request::$referrer;
             }
-            else
+            
+            // Finally… default referrer
+            if ( ! $referrer)
             {
-                $this->redirect(Request::$referrer, $code);
+                $referrer = $default;
             }
+            
+            $this->redirect(trim(parse_url($referrer, PHP_URL_PATH), '/'), $code);
         }
         
         /**
