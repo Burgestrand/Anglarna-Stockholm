@@ -16,7 +16,7 @@
     * @see http://docs.kohanaphp.com/about.configuration
     * @see http://php.net/setlocale
     */
-    setlocale(LC_ALL, 'en_US.utf-8');
+    setlocale(LC_ALL, 'C');
     
     /**
      * Enable the Kohana auto-loader.
