@@ -18,7 +18,6 @@
             Request::instance()->action     = $action;
             
             // Load the pages
-            $this->template->title   = Kohana::message('titles', $path);
             $this->template->content = View::factory($path);
         }
     }

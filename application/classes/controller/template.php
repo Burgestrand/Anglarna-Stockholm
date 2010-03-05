@@ -27,12 +27,20 @@
         }
         
         /**
-         * Removes Messages that’s been displayed
+         * Removes Messages that’s been displayed and set title
          */
         public function after()
         {
-            parent::after();
+            if ($this->template instanceof View)
+            {
+                if (empty($this->template->title))
+                {
+                    $this->template->title = Kohana::message('titles', "{$this->request->controller}/{$this->request->action}");
+                }
+            }
+            
             unset($_SESSION['messages']);
+            parent::after();
         }
     }
     
