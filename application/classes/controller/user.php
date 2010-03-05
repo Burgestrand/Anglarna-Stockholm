@@ -233,7 +233,7 @@
         {
             $this->auth->logout();
             $this->message_add('Du har nu loggats ut.');
-            $this->request->redirect(arr::get($_GET, 'referrer', '/'));
+            $this->request->redirect_back();
         }
         
         /**
@@ -335,7 +335,7 @@
                     }
                 }
                 
-                $this->request->redirect($this->request->uri(), 303);
+                $this->request->reload();
             }
             
             $this->template->content = View::factory('user/register')

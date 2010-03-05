@@ -52,7 +52,7 @@
                     $this->message_add('Du måste ange ett meddelande.', 'error');
                 }
                 
-                $this->request->redirect('kontakt', 303);
+                $this->request->reload();
             }
             
             $this->template->title = 'Kontakta Änglarna Stockholm';
