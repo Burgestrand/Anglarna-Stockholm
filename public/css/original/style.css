@@ -393,36 +393,36 @@ input[type="submit"]:active
     .posts li
     {
         list-style: none !important;
-        margin: 0;
+        margin: .25em 0 0;
         padding: .5em 0;
     }
-    .posts .message /* content */
+    .posts .meta ~ *
     {
-        clear: both;
+        margin-bottom: .25em;
         overflow: auto;
+        padding: .2em;
         white-space: pre-wrap;
     }
 
-p.meta
+.meta
 {
     border-bottom: 1px solid #ddd;
     color: #999;
     margin: 0 0 .2em;
+    overflow: hidden;
 }
-    p.meta .date
-    {
-        display: inline-block;
-        float: right;
-    }
-    p.meta strong
+    .meta strong
     {
         color: #006bbb;
+    }
+    .meta .date
+    {
+        float: right;
     }
 
 /* Forum Selection */
 .nav.forums
-{
-}
+{}
     .nav.forums li
     {
         background: #006bbb;
