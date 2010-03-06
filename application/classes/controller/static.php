@@ -9,16 +9,16 @@
      */
     class Controller_Static extends Controller_Template
     {
-        public function action_load($controller, $action)
+        public function action_load($path)
         {
-            $path = "{$controller}/{$action}";
+            list($controller, $action) = arr::merge(explode('/', $path), array('index'));
             
             // Alter for navigation purposes
             Request::instance()->controller = $controller;
             Request::instance()->action     = $action;
             
             // Load the pages
-            $this->template->content = View::factory($path);
+            $this->template->content = View::factory("static/{$path}");
         }
     }
     

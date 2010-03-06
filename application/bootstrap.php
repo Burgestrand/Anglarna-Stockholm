@@ -100,25 +100,23 @@
         ->defaults(array(
             'controller' => 'error',
             'action'     => 'error',
-            // params
             'status'     => 500,
         ));
     
-    Route::set('default', '<controller>(/<action>)', array('controller' => 'kontakt|user'));
-    Route::set('forum', 'forum(/<forum>(/<action>))', array('forum' => '[^/]*'))
-        ->defaults(array(
+    Route::set('user', 'user(/<action>)')->defaults(array('controller' => 'user'));
+    Route::set('kontakt', 'kontakt')->defaults(array('controller' => 'kontakt'));
+    Route::set('forum', 'forum(/<forum>(/<action>))')->defaults(array(
             'controller' => 'forum',
-            // params
             'forum'      => 'Öppet Forum',
         ));
     
-    Route::set('static', '<category>(/<page>)', array('category' => '[^/]*', 'page' => '.+'))
-        ->defaults(array(
+    Route::set('static', '(<path>)', array(
+            'path'   => '[^\.]+',
+        ))->defaults(array(
             'controller' => 'static',
             'action'     => 'load',
             // params
-            'category'   => 'start',
-            'page'       => 'index',
+            'path'       => 'start',
         ));
     
     /**
