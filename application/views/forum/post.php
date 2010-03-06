@@ -1,5 +1,5 @@
 <p class="meta">
-    <?php
+    <span class="name"><?php
         // authentic author?
         $guest = ! $post->user->id || 
                  $post->user->load()->username !== $post->author;
@@ -17,7 +17,7 @@
             echo $post->ip;
             echo ')';
         }
-    ?>:
+    ?>:</span>
     <span class="date"><?php echo $post->created; ?></span>
 </p>
-<p class="message"><?php echo Model_Post::stylize($post->message) ?></p>
+<?php echo Model_Post::stylize($post->message) ?>

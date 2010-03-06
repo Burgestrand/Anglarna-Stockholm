@@ -34,10 +34,12 @@
 <ol class="posts">
 <?php
     if ($posts->count() >= 1):
-        foreach ($posts as $post)
-        {
-            printf('<li class="post">%s</li>', View::factory('forum/post')->set('post', $post));
-        }
+        foreach ($posts as $post): ?>
+        <li class="post">
+            <?php echo View::factory('forum/post')->set('post', $post) ?> 
+        </li>
+<?php
+        endforeach;
     else: ?>
     <li>
         <p class="meta">

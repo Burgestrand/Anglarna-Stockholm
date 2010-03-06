@@ -34,10 +34,7 @@
         
         public static function stylize($string)
         {
-            // Sanitize HTML
-            $string = html::chars($string);
-            
-            return $string;
+            return Markup::stylize($string);
         }
     }
     
