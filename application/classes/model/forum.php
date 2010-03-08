@@ -29,12 +29,16 @@
             );
         }
         
-        public static function factory($key, array $dummy = array())
+        public static function factory($key = NULL, array $dummy = array())
         {
             $forum = parent::factory('forum');
-            return $forum->values(array(
-                $forum->unique_key($key) => $key,
-            ) + $dummy);
+            
+            if ( ! is_null($key))
+            {
+                $dummy = array($forum->unique_key($key) => $key) + $dummy;
+            }
+            
+            return $forum->values($dummy);
         }
         
         public function unique_key($key)
