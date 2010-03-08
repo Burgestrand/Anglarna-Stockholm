@@ -7,7 +7,7 @@
 ?> 
 
 <!-- Forum form -->
-<?php echo form::open(Route::get('forum')->uri(array('action' => 'post', 'forum' => $forum)), array('class' => 'clear')) ?> 
+<?php echo form::open(Route::get('forum')->uri(array('forum' => $forum)), array('class' => 'clear')) ?> 
     <dl>
         <dt>
             <label>Namn <input type="text" name="author" value="<?php echo $username ?>" maxlength="50" class="voodoo" tabindex="1"></label>
@@ -23,7 +23,6 @@
     <p>
         <input type="submit" value="Publicera inlägg" class="voodoo" tabindex="3">
     </p>
-    <input type="hidden" name="forum" value="<?php echo $forum ?>">
 </form>
 
 <!-- Paging -->

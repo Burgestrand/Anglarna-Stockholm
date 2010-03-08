@@ -103,21 +103,24 @@
             'status'     => 500,
         ));
     
-    Route::set('user', 'user(/<action>)')->defaults(array('controller' => 'user'));
-    Route::set('kontakt', 'kontakt')->defaults(array('controller' => 'kontakt'));
-    Route::set('forum', 'forum(/<forum>(/<action>))')->defaults(array(
-            'controller' => 'forum',
-            'forum'      => 'Öppet Forum',
-        ));
+    // Forum routes
+    Route::set('forum', 'forum(/<forum>)(.<format>)')->defaults(array(
+        'controller' => 'forum',
+        'forum'      => 'Öppet Forum',
+        'format'     => 'html',
+    ));
+
+    Route::set('default', '<controller>(/<action>)', array(
+        'controller' => 'kontakt|user',
+    ))->defaults(array(
+        'action' => 'index',
+    ));
     
-    Route::set('static', '(<path>)', array(
-            'path'   => '[^\.]+',
-        ))->defaults(array(
-            'controller' => 'static',
-            'action'     => 'load',
-            // params
-            'path'       => 'start',
-        ));
+    Route::set('static', '(<path>)', array('path' => '.+?'))->defaults(array(
+        'controller' => 'static',
+        'action'     => 'load',
+        'path'       => 'start'
+    ));
     
     /**
      * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
@@ -129,20 +132,11 @@
     }
     catch (Exception $e)
     {
-        if (IN_DEVELOPMENT)
-           throw $e;
+        if (IN_DEVELOPMENT) throw $e;
         
-        if ($e instanceof Kohana_Request_Exception)
-        {
-            // No route has matched, just 404 it
-            $request = Request::factory('error/404')->execute();
-        }
-        else
-        {
-            // Unknown error. Log it and fall back to a 404.
-            Kohana::$log->add(Kohana::ERROR, $e);
-            $request = Request::factory('error/404')->execute();
-        }
+        // Server error
+        Kohana::$log->add(Kohana::ERROR, $e);
+        $request = Request::factory('error/404')->execute();
     }
     
     /**

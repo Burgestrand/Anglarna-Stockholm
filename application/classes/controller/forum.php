@@ -6,14 +6,13 @@
      */
     class Controller_Forum extends Controller_Template
     {
+        protected $_forum;
+        
         /**
          * Views the given forum, or the first valid forum
          */
         public function action_index($forum)
         {
-            // Load the current forum
-            $forum = Model_Forum::factory($forum)->load();
-            
             // Load View data
             $this->template->content = $content = View::factory('forum/index');
             
@@ -22,7 +21,7 @@
             $content->username = $this->auth->logged_in() ? $this->auth->get_user()->username : '';
             
             // Forum posts
-            $posts = Sprig::factory('post', array('forum' => $forum->id));
+            $posts = Sprig::factory('post', array('forum' => $this->_forum->id));
             $ipp = 10;
             $content->paging = $paging = html::paging(arr::get($_GET, 'page', 1), 
                                                       ceil($posts->count() / $ipp),
@@ -33,11 +32,11 @@
         /**
          * Post a new post in the current forum
          */
-        public function action_post($forum)
+        public function action_create()
         {
             if ( ! empty($_POST))
             {
-                $_POST['forum'] = Model_Forum::factory($forum)->load()->id;
+                $_POST['forum'] = $this->_forum->id;
                 $this->auth->logged_in() AND $_POST['user'] = $this->auth->get_user()->id;
                 
                 try
@@ -53,7 +52,7 @@
                 }
             }
             
-            $this->request->redirect_back();
+            $this->request->reload();
         }
         
         /**
@@ -98,6 +97,15 @@
                 throw new Kohana_Exception('Otillräckliga privilegier för :forum', array(
                     ':forum' => $param,
                 ));
+            }
+            
+            // Save forum for later use
+            $this->_forum = $forum;
+            
+            // REST-thingy
+            if (Request::$method == 'POST')
+            {
+                $this->request->action = 'create';
             }
         }
     }
