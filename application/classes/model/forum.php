@@ -41,6 +41,36 @@
             return $forum->values($dummy);
         }
         
+        /**
+         * Fetch ONLY the forums where all roles are contained within the given parameter
+         * 
+         * @param array roles
+         * @return Database_Result
+         */
+        public function fetch(array $roles = array())
+        {
+            // Compute roles clause
+            empty($roles) AND $roles = array('');
+            $roles = array_map(array(Database::instance(), 'escape'), $roles);
+            $roles = implode(', ', $roles);
+            $roles = DB::expr("({$roles})");
+            
+            // Target model
+            $field = $this->field('roles');
+            $model = Sprig::factory($field->model);
+            
+            // Find the proper forums
+            $query = DB::select()
+                ->join($field->through, 'LEFT')
+                ->on($this->fk($field->through), '=', $this->pk(TRUE))
+                ->join($model->table(), 'LEFT')->on($model->fk($field->through), '=', $model->pk(TRUE))
+                                               ->on($model->pk(TRUE), 'NOT IN', $roles)
+                ->group_by($this->pk(TRUE))
+                ->having("COUNT(\"{$model->pk(TRUE)}\")", '=', 0);
+            
+            return Sprig::factory('forum')->load($query, 0);
+        }
+        
         public function unique_key($key)
         {
             return ctype_digit($key) ? 'id' : 'name';
