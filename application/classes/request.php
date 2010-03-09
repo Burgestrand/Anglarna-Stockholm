@@ -22,22 +22,14 @@
          */
         public function redirect_back($default = '/', $code = 303)
         {
-            // Referrer within GET parameters?
-            $referrer = arr::get($_GET, 'referrer', NULL);
-            
-            // Try the HTTP referrer
-            if ( ! $referrer)
+            if (Request::$referrer)
             {
-                $referrer = Request::$referrer;
+                $default = Request::$referrer;
             }
             
-            // Finally… default referrer
-            if ( ! $referrer)
-            {
-                $referrer = $default;
-            }
+            $referrer = arr::get($_GET, 'referrer', $default);
             
-            $this->redirect(trim(parse_url($referrer, PHP_URL_PATH), '/'), $code);
+            $this->redirect($referrer, $code);
         }
         
         /**
