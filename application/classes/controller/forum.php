@@ -13,11 +13,23 @@
          */
         public function action_index($forum)
         {
-            // Load View data
+            // View data
             $this->template->content = $content = View::factory('forum/index');
+            $content->set('forum', $this->request->param('forum'));
+            $content->bind('forums', $forums);
             
-            $content->forum = $this->request->param('forum');
-            $content->forums = $this->forums();
+            // Fetch the proper forums
+            if ($this->auth->has_roles('admin'))
+            {
+                $forums = Sprig::factory('forum')->load(NULL, 0);
+            }
+            else
+            {
+                $roles  = ($user = $this->auth->get_user()) ? $user->roles->as_array(NULL, 'id') : array();
+                $forums = Sprig::factory('forum')->fetch($roles);
+            }
+            
+            // Load View data
             $content->username = $this->auth->logged_in() ? $this->auth->get_user()->username : '';
             
             // Forum posts
@@ -53,28 +65,6 @@
             }
             
             $this->request->reload();
-        }
-        
-        /**
-         * List all forums the current user has access to
-         * 
-         * @return array
-         */
-        public function forums()
-        {
-            $forums = array();
-            
-            foreach (Sprig::factory('forum')->load(NULL, 0) as $forum)
-            {
-                $roles = $forum->roles->as_array(NULL, 'name');
-                
-                if ($this->auth->has_roles($roles))
-                {
-                    $forums[] = $forum;
-                }
-            }
-            
-            return $forums;
         }
         
         public function before()
