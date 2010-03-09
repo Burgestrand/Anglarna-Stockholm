@@ -34,7 +34,7 @@
             
             // Forum posts
             $posts = Sprig::factory('post', array('forum' => $this->_forum->id));
-            $ipp = 10;
+            $ipp = 25;
             $content->paging = $paging = html::paging(arr::get($_GET, 'page', 1), 
                                                       ceil($posts->count() / $ipp),
                                                       5);
