@@ -29,11 +29,11 @@
             );
         }
         
-        public static function factory($key = NULL, array $dummy = array())
+        public static function factory($key, array $dummy = array())
         {
             $forum = parent::factory('forum');
             
-            if ( ! is_null($key))
+            if ( ! empty($key))
             {
                 $dummy = array($forum->unique_key($key) => $key) + $dummy;
             }
