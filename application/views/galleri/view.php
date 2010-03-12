@@ -4,7 +4,7 @@
     <ol class="gallery images">
         <?php foreach ($images as $image): ?> 
         <li>
-            <a href="<?php echo $image->path ?>"><img src="<?php echo $image->thumb ?>" height="80" alt="<?php echo $image->alt ?>"></a>
+            <a href="<?php echo $image->path ?>" rel="shadowbox[galleri]"><img src="<?php echo $image->thumb ?>" height="80" alt="<?php echo $image->alt ?>"></a>
         </li>
         <?php endforeach; ?> 
     </ol>
