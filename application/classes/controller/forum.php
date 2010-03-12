@@ -74,19 +74,27 @@
             $param = $this->request->param('forum');
             $forum = Model_Forum::factory($param)->load();
             
-            if ( ! $forum->loaded())
+            try
             {
-                throw new Kohana_Exception('Forumet :forum existerar inte', array(
-                    ':forum' => $param
-                ));
-            }
+                if ( ! $forum->loaded())
+                {
+                    throw new Kohana_Exception('Forumet :forum existerar inte.', array(
+                        ':forum' => $param
+                    ));
+                }
             
-            $roles = $forum->roles->as_array(NULL, 'name');
-            if ( ! $this->auth->has_roles($roles))
+                $roles = $forum->roles->as_array(NULL, 'name');
+                if ( ! $this->auth->has_roles($roles))
+                {
+                    throw new Kohana_Exception('Då måste vara inloggad för att ha tillgång till forum/:forum.', array(
+                        ':forum' => $forum->name,
+                    ));
+                }
+            }
+            catch (Kohana_Exception $e)
             {
-                throw new Kohana_Exception('Otillräckliga privilegier för :forum', array(
-                    ':forum' => $param,
-                ));
+                $this->message_add($e->getMessage(), 'error');
+                $this->request->redirect('forum');
             }
             
             // Save forum for later use
