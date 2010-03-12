@@ -11,6 +11,7 @@
     {
         public function action_index()
         {
+            $this->template->title = 'Änglarna Stockholms galleri';
             $this->template->content = View::factory('galleri/index')
                                            ->set('galleries', Model_Gallery::factory()->load(NULL, 0));
         }
