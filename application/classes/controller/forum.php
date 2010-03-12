@@ -86,7 +86,7 @@
                 $roles = $forum->roles->as_array(NULL, 'name');
                 if ( ! $this->auth->has_roles($roles))
                 {
-                    throw new Kohana_Exception('Då måste vara inloggad för att ha tillgång till forum/:forum.', array(
+                    throw new Kohana_Exception('Du måste vara inloggad för att ha tillgång till forum/:forum.', array(
                         ':forum' => $forum->name,
                     ));
                 }
