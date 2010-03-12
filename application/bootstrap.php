@@ -109,6 +109,12 @@
         'forum'      => 'Öppet Forum',
         'format'     => 'html',
     ));
+    
+    // Gallery routes
+    Route::set('gallery', 'gallery(/<galleri>)', array('galleri' => '.+'))->defaults(array(
+        'controller' => 'gallery',
+        'galleri'    => NULL,
+    ));
 
     Route::set('default', '<controller>(/<action>)', array(
         'controller' => 'kontakt|user',

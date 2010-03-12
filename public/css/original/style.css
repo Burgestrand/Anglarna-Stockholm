@@ -450,3 +450,47 @@ input[type="submit"]:active
             color: #09c;
             display: inline;
         }
+
+
+/*
+ * -------------------------------------------------------------------------
+ * =& PAGE: GALLERI
+ * -------------------------------------------------------------------------
+ */
+
+/* Gallerilista */
+.gallery.galleries li
+{
+    list-style-type: none;
+    font-size: 1.25em;
+    margin: .5em 0;
+}
+.gallery.galleries li a
+{
+    background: #006bbb;
+    border: .1em solid #147;
+    color: white;
+    display: block;
+    padding: .5em .2em;
+}
+
+/* Galleribilder */
+.gallery.images
+{
+    margin: 0 0 .5em 0;
+    text-align: center;
+}
+.gallery.images li
+{
+    display: inline;
+    list-style-type: none;
+    margin: .2em .2em .2em 0;
+}
+.gallery.images a
+{
+    border: 0;
+}
+.gallery.images img
+{
+    border: .2em solid #000;
+}
