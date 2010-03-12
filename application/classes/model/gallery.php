@@ -77,7 +77,7 @@
                 // Find only galleries
                 foreach (array_keys($iter) as $path)
                 {
-                    if ( ! is_dir($path))
+                    if ( ! is_dir($path) && ! preg_match('#_thumb\.jpg#', $path))
                     {
                         $path = str_replace(Model_Gallery::$_root, '', dirname($path));
                         
@@ -95,7 +95,7 @@
                 foreach ($paths as $path => $count)
                 {
                     $tmp[] = (object) array(
-                        'path' => $path,
+                        'path'   => $path,
                         'images' => $count,
                     );
                 }
