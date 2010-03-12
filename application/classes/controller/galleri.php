@@ -7,7 +7,7 @@
      * @author      Kim Burgestrand
      * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
-    class Controller_Gallery extends Controller_Template
+    class Controller_Galleri extends Controller_Template
     {
         public function action_index()
         {

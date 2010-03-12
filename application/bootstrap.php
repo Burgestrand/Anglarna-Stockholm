@@ -111,8 +111,8 @@
     ));
     
     // Gallery routes
-    Route::set('gallery', 'gallery(/<galleri>)', array('galleri' => '.+'))->defaults(array(
-        'controller' => 'gallery',
+    Route::set('gallery', 'galleri(/<galleri>)', array('galleri' => '.+'))->defaults(array(
+        'controller' => 'galleri',
         'galleri'    => NULL,
     ));
 

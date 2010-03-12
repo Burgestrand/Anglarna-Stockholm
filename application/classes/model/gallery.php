@@ -15,7 +15,7 @@
         {
             if ( ! Model_Gallery::$_root)
             {
-                Model_Gallery::$_root = DOCROOT . 'gallery';
+                Model_Gallery::$_root = DOCROOT . 'galleri';
             }
             
             if ( ! is_null($path))
