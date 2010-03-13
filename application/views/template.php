@@ -57,7 +57,6 @@
         </div>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="<?php echo url::site('js/jquery.textarearesizer.compressed.js') ?>" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript" src="<?php echo url::site('js/shadowbox-3.0.3/shadowbox.js') ?>"></script>
         <script src="<?php echo url::site('js/main.js') ?>" type="text/javascript" charset="utf-8"></script>
         <!--[if lt IE 8]>
