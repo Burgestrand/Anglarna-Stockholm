@@ -30,18 +30,10 @@
             <hr class="hide">
             <div class="section body <?php empty($sidebar) or print('sidebar') ?>">
                 <?php 
-                    foreach ($messages as $type => $msgs)
-                    {
-                        printf('<ul class="message %s">', html::chars($type));
-                        foreach ($msgs as $msg)
-                        {
-                            printf('<li>%s</li>', $msg);
-                        }
-                        print('</ul>');
-                    }
+                    echo View::factory('template/messages')->bind('messages', $messages);
                     
                     echo $content;
-                ?>
+                ?> 
             </div>
             <?php
                 if ( ! empty($sidebar))
@@ -49,7 +41,7 @@
                     print '<hr class="hide">';
                     printf('<div class="aside">%s</div>', $sidebar);
                 }
-            ?>
+            ?> 
             <div class="clear"></div>
             <p class="footer">
                 <?php echo html::anchor('om/hemsidan', 'om hemsidan') ?>
