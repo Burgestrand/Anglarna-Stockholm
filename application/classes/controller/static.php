@@ -11,14 +11,15 @@
     {
         public function action_load($path)
         {
-            list($controller, $action) = arr::merge(explode('/', $path), array('index'));
-            
-            // Alter for navigation purposes
-            Request::instance()->controller = $controller;
-            Request::instance()->action     = $action;
-            
             // Load the pages
             $this->template->content = View::factory("static/{$path}");
+        }
+        
+        public function before()
+        {
+            $path = $this->request->param('path');
+            $this->request->controller = substr($path, strpos($path, '/'));
+            parent::before();
         }
     }
     

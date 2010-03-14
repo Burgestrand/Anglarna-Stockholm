@@ -2,29 +2,34 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=utf-8">
-        <title><?php echo html::chars($title) ?></title>
-        
+
+        <!-- Favicon -->
         <link rel="icon" type="image/png" href="<?php echo url::site('favicon.png') ?>">
-        
+
         <!-- YUI (reset, base) -->
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/reset-fonts/reset-fonts.css"> 
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/base/base-min.css">
-        
+
+        <!-- Shadowbox -->
+        <link rel="stylesheet" type="text/css" href="<?php echo url::site('js/shadowbox-3.0.3/shadowbox.css')?>">
+
         <!-- CSS Styles -->
         <link rel="stylesheet" href="<?php echo url::site('css/original/style.css') ?>" type="text/css" media="screen" title="Original">
         <!--[if lt IE 8]>
             <link rel="stylesheet" href="<?php echo url::site('css/original/ie7.css') ?>" type="text/css" media="screen">
         <![endif]-->
-        
-        <link rel="stylesheet" type="text/css" href="<?php echo url::site('js/shadowbox-3.0.3/shadowbox.css')?>">
+
+        <title><?php echo html::chars($title) ?></title>
     </head>
-    <?php flush(); ?> 
+<?php flush(); ?>
     <body>
         <?php echo View::factory('user/panel') ?>
         <div class="section main">
             <div class="header">
                 <a class="logo" href="<?php echo url::site('/') ?>"><img src="<?php echo url::site('img/header.jpg') ?>" alt="Änglarna Stockholm" width="746" height="107"></a>
-                <?php echo html::navigation(array('start', 'forum', 'resor', 'arkiv', 'galleri', 'kontakt')) ?>
+                <?php
+                    echo $navigation
+                ?> 
                 <div class="clear"></div>
             </div>
             <hr class="hide">
