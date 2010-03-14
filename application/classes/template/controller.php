@@ -20,10 +20,9 @@
             $this->messages += Arr::get($_SESSION, 'messages', array());
             $_SESSION['messages'] = &$this->messages;
             
-            if ($this->template instanceof View)
-            {
-                $this->template->sidebar = View::factory('sidebar');
-            }
+            // Template variables
+            $template = $this->template;
+            $template->sidebar = View::factory('sidebar');
         }
         
         /**
@@ -31,12 +30,9 @@
          */
         public function after()
         {
-            if ($this->template instanceof View)
+            if (empty($this->template->title))
             {
-                if (empty($this->template->title))
-                {
-                    $this->template->title = Kohana::message('titles', "{$this->request->controller}/{$this->request->action}");
-                }
+                $this->template->title = Kohana::message('titles', "{$this->request->controller}/{$this->request->action}");
             }
             
             unset($_SESSION['messages']);
