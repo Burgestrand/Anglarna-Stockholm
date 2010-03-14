@@ -7,7 +7,7 @@
      * @author      Kim Burgestrand
      * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
-    class Controller_Static extends Controller_Template
+    class Controller_Static extends Template_Controller
     {
         public function action_load($path)
         {

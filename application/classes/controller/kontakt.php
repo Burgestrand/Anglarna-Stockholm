@@ -4,7 +4,7 @@
      * @author      Kim Burgestrand
      * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
-    class Controller_Kontakt extends Controller_Template
+    class Controller_Kontakt extends Template_Controller
     {
         public function action_index()
         {

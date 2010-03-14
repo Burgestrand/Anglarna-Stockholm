@@ -6,7 +6,7 @@
      * @author      Kim Burgestrand
      * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
-    class Controller_Template extends Koxtend_Controller_Template
+    class Template_Controller extends Koxtend_Controller_Template
     {
         /**
          * Initializes Session, Auth and Messages

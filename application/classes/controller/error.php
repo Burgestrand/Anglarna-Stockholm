@@ -7,7 +7,7 @@
      * @author      Kim Burgestrand <kim@burgestrand.se>
      * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
-    class Controller_Error extends Controller_Template
+    class Controller_Error extends Template_Controller
     {
         public $template = 'error/template';
         public $suggestions = array();
