@@ -5,7 +5,8 @@ return array('database' => array(
                  'table' => 'sessions', // table to store session data in
                  'name' => 'angelsession',
                  'lifetime' => 0, // session exits only when browser does
-             ));
+             ),
+             'driver' => 'database');
 
 /* End of file session.php */
 /* Location: ./application/config/session.php */ 

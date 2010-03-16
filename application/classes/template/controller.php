@@ -9,16 +9,13 @@
     class Template_Controller extends Koxtend_Controller_Template
     {
         /**
-         * Initializes Session, Auth and Messages
+         * Initializes Session and Auth
          */
         public function before()
         {
             parent::before();
-            $this->session = Session::instance('database');
+            $this->session = Session::instance();
             $this->auth    = Auth::instance();
-            
-            $this->messages += Arr::get($_SESSION, 'messages', array());
-            $_SESSION['messages'] = &$this->messages;
             
             // Navigation links
             $links = array('start', 'forum', 'resor',
@@ -51,9 +48,6 @@
             $template->sidebar    = View::factory('sidebar');
         }
         
-        /**
-         * Removes Messages that’s been displayed and set title
-         */
         public function after()
         {
             if (empty($this->template->title))
@@ -61,8 +55,7 @@
                 $this->template->title = Kohana::message('titles', "{$this->request->controller}/{$this->request->action}");
             }
             
-            unset($_SESSION['messages']);
-            parent::after();
+            return parent::after();
         }
     }
     

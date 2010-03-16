@@ -34,8 +34,7 @@
             <hr class="hide">
             <div class="section body <?php empty($sidebar) or print('sidebar') ?>">
                 <?php 
-                    echo View::factory('template/messages')->bind('messages', $messages);
-                    
+                    echo View::factory('koxtend/messages');
                     echo $content;
                 ?> 
             </div>
