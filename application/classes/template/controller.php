@@ -21,7 +21,7 @@
             $_SESSION['messages'] = &$this->messages;
             
             // Navigation links
-            $links = array('start', 'resor', 'forum', 
+            $links = array('start', 'forum', 'resor',
                            'arkiv', 'galleri', 'kontakt');
             
             foreach ($links as $i => $link)
