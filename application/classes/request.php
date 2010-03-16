@@ -6,7 +6,7 @@
      * @author      Kim Burgestrand
      * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
-    class Request extends Kohana_Request
+    class Request extends Koxtend_Request
     {
         /**
          * Redirects the user back to where they came from
@@ -30,20 +30,6 @@
             $referrer = arr::get($_GET, 'referrer', $default);
             
             $this->redirect($referrer, $code);
-        }
-        
-        /**
-         * Redirect to current page (basically a page refresh)
-         * 
-         * This is useful when you POST data to a page and want to be
-         * able to refresh it without resending it.
-         * 
-         * @param code HTTP status code (default: 303)
-         * @return void
-         */
-        public function reload($code = 303)
-        {
-            $this->redirect($this->uri(), $code);
         }
     }
 
