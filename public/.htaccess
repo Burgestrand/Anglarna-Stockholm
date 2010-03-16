@@ -4,6 +4,7 @@ RewriteBase /
 
 # Do not enable rewriting for files or directories that exist
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !sqlbuddy
 
 # Final rewrite for pretty URLs
 RewriteRule ^(.*)$ index.php/$1 [PT,L]
