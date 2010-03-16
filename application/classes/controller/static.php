@@ -12,11 +12,14 @@
         public function action_load($path)
         {
             // Load the pages
-            $this->template->content = View::factory("static/{$path}");
+            $template = $this->template;
+            $template->title = Kohana::message('titles', $path);
+            $template->content = View::factory("static/{$path}");
         }
         
         public function before()
         {
+            // For nagivation active link show
             $path = $this->request->param('path');
             $this->request->controller = substr($path, strpos($path, '/'));
             parent::before();
