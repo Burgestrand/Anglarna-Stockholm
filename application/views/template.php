@@ -21,7 +21,6 @@
 
         <title><?php echo html::chars($title) ?></title>
     </head>
-<?php flush(); ?>
     <body>
         <?php echo View::factory('user/panel') ?>
         <div class="section main">
