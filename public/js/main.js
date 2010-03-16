@@ -2,6 +2,8 @@
 $('a[href]').each(function () {
     var href = $(this).attr('href')
     
+    if ($(this).attr('rel').match(/shadowbox/)) return;
+    
     if (href.match(/youtube\.com\/(v|watch)/i))
     {
         //var href = $(this).attr('href').replace(/\?|&|=/g, function (v) { return escape(v) })
@@ -9,9 +11,9 @@ $('a[href]').each(function () {
         
         $(this).attr('rel', 'shadowbox[youtube];height=385;width=480;player=swf;content=' + href)
     }
-    else if (href.match(/\.(jpe?g|png|gif|mov|swf)/))
+    else if (href.match(/\.(jpe?g|png|gif)/))
     {
-        $(this).attr('rel', 'shadowbox')
+        $(this).attr('rel', 'shadowbox[img]')
     }
 })
 
