@@ -17,7 +17,7 @@
         public static function stylize($text)
         {
             $text = self::chars($text);
-            $text = self::inlines($text);
+            //$text = self::inlines($text);
             $text = self::links($text);
             $text = self::paragraphs($text);
             
