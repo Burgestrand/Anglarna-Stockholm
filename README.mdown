@@ -19,6 +19,4 @@ Meddelande till klonare
 
 Framtida notiser
 ----------------
-- Byt till InnoDB på sessionstabellen ifall sidladdning går segt vid
-  många besökare (row locks istället för table locks)
 - http://wmd-editor.com/ ser lovande ut (med lite stiländringar)
