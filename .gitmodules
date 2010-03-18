@@ -25,3 +25,6 @@
 [submodule "modules/kohana-email"]
 	path = modules/kohana-email
 	url = git://github.com/banks/kohana-email.git
+[submodule "modules/kotwig"]
+	path = modules/kotwig
+	url = git://github.com/Burgestrand/kotwig.git

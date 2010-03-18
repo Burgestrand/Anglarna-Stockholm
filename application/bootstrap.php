@@ -86,6 +86,7 @@
         'auth'       => MODPATH.'auth',
         'userguide'  => MODPATH.'userguide',  // User guide and API documentation
         'koxtend'    => MODPATH.'koxtend',   // Controller template and view examples
+        'kotwig'     => MODPATH.'kotwig',
         'e-mail'     => MODPATH.'kohana-email',
         ));
 
