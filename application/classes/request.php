@@ -22,14 +22,13 @@
          */
         public function redirect_back($default = '/', $code = 303)
         {
-            if (Request::$referrer)
-            {
-                $default = Request::$referrer;
-            }
+            $referrer = arr::get(
+                $_GET, 
+                'referrer',
+                Request::$referrer ? Request::$referrer : $default
+            );
             
-            $referrer = arr::get($_GET, 'referrer', $default);
-            
-            $this->redirect($referrer, $code);
+            $this->redirect(url::site($referrer), $code);
         }
     }
 
