@@ -4,6 +4,7 @@
      * Gallery
      *
      * @package     Änglarna STHLM
+     * @category    Controllers
      * @author      Kim Burgestrand
      * @license     http://www.fsf.org/licensing/licenses/agpl-3.0.html
      */
