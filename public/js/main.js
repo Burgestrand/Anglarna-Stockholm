@@ -15,6 +15,36 @@ $('a[href]').each(function () {
     {
         $(this).attr('rel', 'shadowbox[img]')
     }
+    else if ($(this).attr('rel') == 'delete')
+    {
+        $(this).click(function (e) {
+            e.preventDefault()
+            if (confirm('Vill du verkligen ta bort denna post?'))
+            {
+                var split = href.split('?')
+                var url   = split[0]
+                var query = split[1]
+                var $li   = $(this).closest('li')
+                
+                jQuery.ajax({
+                    type: 'delete',
+                    url: url,
+                    dataType: 'json',
+                    cache: false,
+                    processData: false,
+                    data: query,
+                    success: function (data, status)
+                    {
+                        $li.fadeOut('fast', function () { $li.remove() })
+                    },
+                    error: function (req, status, error)
+                    {
+                        alert("Fel (" + req.status + "): " + req.responseText);
+                    }
+                })
+            }
+        })
+    }
 })
 
 Shadowbox.init({

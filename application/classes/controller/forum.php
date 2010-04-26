@@ -76,17 +76,23 @@
         {
             if ($this->auth->has_roles('moderator'))
             {
-                $id = max(arr::get($_GET, 'id'), 1);
+                $id = max(arr::get($_POST, 'id'), 1);
                 $post = Sprig::factory('post', array('id' => $id))->load();
                 
                 if ($post->loaded())
                 {
                     $post->delete();
-                    $this->message_add("Post #{$post->id} har tagits bort.");
+                    $this->template->content = json_encode("Post #{$post->id} har tagits bort");
+                    return;
                 }
+                
+                $this->request->status = 404;
+                $this->template->content = json_encode("Post #{$post->id} hittades inte.");
+                return;
             }
             
-            $this->request->redirect_back();
+            $this->request->status = 403;
+            $this->template->content = json_encode('Du har inte moderatorprivilegier.');
         }
         
         public function before()
@@ -123,9 +129,10 @@
             $this->_forum = $forum;
             
             // REST-thingy
-            if (Request::$method == 'POST')
+            switch (Request::$method)
             {
-                $this->request->action = 'create';
+                case 'POST': $this->request->action = 'create'; break;
+                case 'DELETE': $this->request->action = 'delete'; break;
             }
         }
     }
