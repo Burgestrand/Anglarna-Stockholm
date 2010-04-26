@@ -7,7 +7,7 @@
 ?> 
 
 <!-- Forum form -->
-<?php echo form::open(Route::get('forum')->uri(array('forum' => $forum)), array('class' => 'clear')) ?> 
+<?php echo form::open(Route::get('forum')->uri(array('forum' => rawurlencode($forum))), array('class' => 'clear')) ?> 
     <dl>
         <dt>
             <label>Namn <input type="text" name="author" value="<?php echo $username ?>" maxlength="50" class="voodoo" tabindex="1"></label>
@@ -19,6 +19,7 @@
         <dt>
             <label>Meddelande <textarea rows="3" cols="80" name="message" class="voodoo" tabindex="2"></textarea></label>
         </dt>
+        <dd></dd>
     </dl>
     <p>
         <input type="submit" value="Publicera inlägg" class="voodoo" tabindex="3">
@@ -34,7 +35,7 @@
 <?php
     if ($posts->count() >= 1):
         foreach ($posts as $post): ?>
-        <li class="post">
+        <li class="post" id="post<?php echo $post->id ?>">
             <?php echo View::factory('forum/post')->set('post', $post) ?> 
         </li>
 <?php

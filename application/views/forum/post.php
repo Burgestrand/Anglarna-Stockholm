@@ -18,12 +18,12 @@
             echo ')';
             
             // Build post delete URL
-            $url   = Request::instance()->uri(array('action' => 'delete'));
             $query = http_build_query(array(
+                'id' => $post->id,
                 'referrer' => Request::instance()->uri(),
             ));
             
-            echo ' ' . html::anchor("forum/post/delete/{$post->id}?{$query}", 'radera');
+            echo ' ' . html::anchor("forum/?{$query}", 'radera', array('rel' => 'delete'));
         }
     ?></span>
     <span class="date"><?php echo $post->created; ?></span>
