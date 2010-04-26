@@ -39,6 +39,7 @@
                                                       ceil($posts->count() / $ipp),
                                                       5);
             $content->posts = $posts->load(DB::select()->offset(($paging->current - 1) * $ipp), $ipp);
+            $this->template->title = 'Änglarna Stockholms forum: ' . $this->_forum->name;
         }
         
         /**
