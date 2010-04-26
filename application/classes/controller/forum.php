@@ -67,6 +67,26 @@
             $this->request->reload();
         }
         
+        /**
+         * Delete a post
+         */
+        public function action_delete()
+        {
+            if ($this->auth->has_roles('moderator'))
+            {
+                $id = max(arr::get($_GET, 'id'), 1);
+                $post = Sprig::factory('post', array('id' => $id))->load();
+                
+                if ($post->loaded())
+                {
+                    $post->delete();
+                    $this->message_add("Post #{$post->id} har tagits bort.");
+                }
+            }
+            
+            $this->request->redirect_back();
+        }
+        
         public function before()
         {
             parent::before();

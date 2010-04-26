@@ -16,8 +16,16 @@
             }
             echo $post->ip;
             echo ')';
+            
+            // Build post delete URL
+            $url   = Request::instance()->uri(array('action' => 'delete'));
+            $query = http_build_query(array(
+                'referrer' => Request::instance()->uri(),
+            ));
+            
+            echo ' ' . html::anchor("forum/post/delete/{$post->id}?{$query}", 'radera');
         }
-    ?>:</span>
+    ?></span>
     <span class="date"><?php echo $post->created; ?></span>
 </p>
 <?php echo Model_Post::stylize($post->message) ?>
