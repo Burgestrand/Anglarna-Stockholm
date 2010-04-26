@@ -116,6 +116,14 @@
         'controller' => 'galleri',
         'galleri'    => NULL,
     ));
+    
+    // REST API
+    Route::set('api', '<directory>/<controller>(/<action>)(.<format>)', array(
+        'directory' => 'api/' . strtr(Route::REGEX_SEGMENT, array('++' => '+?', '/' => ''))
+    ))->defaults(array(
+        'action' => 'index',
+        'format' => 'html',
+    ));
 
     Route::set('default', '<controller>(/<action>)', array(
         'controller' => 'kontakt|user',
